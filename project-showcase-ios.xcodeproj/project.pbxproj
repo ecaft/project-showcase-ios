@@ -12,7 +12,6 @@
 		DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121B201FF3AB0049260C /* StringDict.swift */; };
 		DA3B121E201FF89E0049260C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121D201FF89E0049260C /* Contact.swift */; };
 		DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25820123A5B009A6D34 /* AppDelegate.swift */; };
-		DAFCB25E20123A5B009A6D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB25C20123A5B009A6D34 /* Main.storyboard */; };
 		DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */; };
 		DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26220123A5B009A6D34 /* Assets.xcassets */; };
 		DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */; };
@@ -30,7 +29,6 @@
 		DA3B121D201FF89E0049260C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = "project-showcase-ios/Utilities/Contact.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB25520123A5B009A6D34 /* project-showcase-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-showcase-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFCB25820123A5B009A6D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAFCB25D20123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAFCB26020123A5B009A6D34 /* project_showcase_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = project_showcase_ios.xcdatamodel; sourceTree = "<group>"; };
 		DAFCB26220123A5B009A6D34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFCB26520123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				DAFCB25820123A5B009A6D34 /* AppDelegate.swift */,
 				DAFCB26F20123ACF009A6D34 /* ViewControllers */,
 				DAFCB27C20124037009A6D34 /* Utilities */,
-				DAFCB25C20123A5B009A6D34 /* Main.storyboard */,
 				DAFCB26220123A5B009A6D34 /* Assets.xcassets */,
 				DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */,
 				DAFCB26720123A5B009A6D34 /* Info.plist */,
@@ -178,7 +175,6 @@
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
 				DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */,
-				DAFCB25E20123A5B009A6D34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,14 +202,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DAFCB25C20123A5B009A6D34 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DAFCB25D20123A5B009A6D34 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
