@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11F268201FFCE000ABE707 /* TeamViewModel.swift */; };
+		DA3B121A201FF0DB0049260C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B1219201FF0DB0049260C /* Team.swift */; };
+		DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121B201FF3AB0049260C /* StringDict.swift */; };
+		DA3B121E201FF89E0049260C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121D201FF89E0049260C /* Contact.swift */; };
 		DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25820123A5B009A6D34 /* AppDelegate.swift */; };
-		DAFCB25B20123A5B009A6D34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25A20123A5B009A6D34 /* ViewController.swift */; };
 		DAFCB25E20123A5B009A6D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB25C20123A5B009A6D34 /* Main.storyboard */; };
 		DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */; };
 		DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26220123A5B009A6D34 /* Assets.xcassets */; };
 		DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */; };
+		DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27420123B38009A6D34 /* BrowseViewController.swift */; };
+		DAFCB27820123B38009A6D34 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27520123B38009A6D34 /* ListViewController.swift */; };
+		DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27620123B38009A6D34 /* MapViewController.swift */; };
+		DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */; };
+		DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27D2012405D009A6D34 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA11F268201FFCE000ABE707 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamViewModel.swift; path = "project-showcase-ios/Utilities/TeamViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		DA3B1219201FF0DB0049260C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Team.swift; path = "project-showcase-ios/Model/Team.swift"; sourceTree = SOURCE_ROOT; };
+		DA3B121B201FF3AB0049260C /* StringDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDict.swift; sourceTree = "<group>"; };
+		DA3B121D201FF89E0049260C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = "project-showcase-ios/Utilities/Contact.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB25520123A5B009A6D34 /* project-showcase-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-showcase-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFCB25820123A5B009A6D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAFCB25A20123A5B009A6D34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DAFCB25D20123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAFCB26020123A5B009A6D34 /* project_showcase_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = project_showcase_ios.xcdatamodel; sourceTree = "<group>"; };
 		DAFCB26220123A5B009A6D34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFCB26520123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFCB26720123A5B009A6D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAFCB27420123B38009A6D34 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowseViewController.swift; path = "project-showcase-ios/ViewControllers/BrowseViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DAFCB27520123B38009A6D34 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "project-showcase-ios/ViewControllers/ListViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DAFCB27620123B38009A6D34 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "project-showcase-ios/ViewControllers/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "project-showcase-ios/ViewControllers/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DAFCB27D2012405D009A6D34 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA3B1218201FF0B20049260C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA3B1219201FF0DB0049260C /* Team.swift */,
+				DA3B121D201FF89E0049260C /* Contact.swift */,
+				DA11F268201FFCE000ABE707 /* TeamViewModel.swift */,
+			);
+			name = Model;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		DAFCB24C20123A5B009A6D34 = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +83,10 @@
 		DAFCB25720123A5B009A6D34 /* project-showcase-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B1218201FF0B20049260C /* Model */,
 				DAFCB25820123A5B009A6D34 /* AppDelegate.swift */,
-				DAFCB25A20123A5B009A6D34 /* ViewController.swift */,
+				DAFCB26F20123ACF009A6D34 /* ViewControllers */,
+				DAFCB27C20124037009A6D34 /* Utilities */,
 				DAFCB25C20123A5B009A6D34 /* Main.storyboard */,
 				DAFCB26220123A5B009A6D34 /* Assets.xcassets */,
 				DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */,
@@ -65,6 +94,27 @@
 				DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */,
 			);
 			path = "project-showcase-ios";
+			sourceTree = "<group>";
+		};
+		DAFCB26F20123ACF009A6D34 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DAFCB27520123B38009A6D34 /* ListViewController.swift */,
+				DAFCB27420123B38009A6D34 /* BrowseViewController.swift */,
+				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
+				DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */,
+			);
+			name = ViewControllers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		DAFCB27C20124037009A6D34 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DAFCB27D2012405D009A6D34 /* Extensions.swift */,
+				DA3B121B201FF3AB0049260C /* StringDict.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +190,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */,
-				DAFCB25B20123A5B009A6D34 /* ViewController.swift in Sources */,
+				DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */,
+				DA3B121E201FF89E0049260C /* Contact.swift in Sources */,
+				DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */,
+				DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */,
+				DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */,
+				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
+				DA3B121A201FF0DB0049260C /* Team.swift in Sources */,
+				DAFCB27820123B38009A6D34 /* ListViewController.swift in Sources */,
 				DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */,
+				DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

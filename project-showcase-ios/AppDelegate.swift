@@ -14,10 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let tabBarVC = TabBarViewController()
+        tabBarVC.tabBar.barTintColor = UIColor.ecaftGray
+        
+        window?.rootViewController = tabBarVC
+        window?.makeKeyAndVisible()
+        
+        setNavAndStatusBarAppearance()
         return true
+    }
+    
+    private func setNavAndStatusBarAppearance() {
+        UINavigationBar.appearance().barTintColor = UIColor.ecaftRed
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.ecaftWhite]
+        UIApplication.shared.statusBarStyle = .lightContent // Set status bar to white
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
