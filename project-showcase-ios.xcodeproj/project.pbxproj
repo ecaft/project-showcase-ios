@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5814F2015FB5A12815684607 /* Pods_project_showcase_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */; };
 		DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11F268201FFCE000ABE707 /* TeamViewModel.swift */; };
 		DA3B121A201FF0DB0049260C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B1219201FF0DB0049260C /* Team.swift */; };
 		DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121B201FF3AB0049260C /* StringDict.swift */; };
@@ -20,9 +21,14 @@
 		DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27620123B38009A6D34 /* MapViewController.swift */; };
 		DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */; };
 		DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27D2012405D009A6D34 /* Extensions.swift */; };
+		ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */; };
+		ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.release.xcconfig"; sourceTree = "<group>"; };
+		D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_showcase_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA11F268201FFCE000ABE707 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamViewModel.swift; path = "project-showcase-ios/Utilities/TeamViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		DA3B1219201FF0DB0049260C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Team.swift; path = "project-showcase-ios/Model/Team.swift"; sourceTree = SOURCE_ROOT; };
 		DA3B121B201FF3AB0049260C /* StringDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDict.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		DAFCB27620123B38009A6D34 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "project-showcase-ios/ViewControllers/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "project-showcase-ios/ViewControllers/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27D2012405D009A6D34 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
+		ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +53,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5814F2015FB5A12815684607 /* Pods_project_showcase_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F11893A7003C450F6B32E6C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A56DEAC0785A79486BBD6007 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */,
+				3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA3B1218201FF0B20049260C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +93,8 @@
 			children = (
 				DAFCB25720123A5B009A6D34 /* project-showcase-ios */,
 				DAFCB25620123A5B009A6D34 /* Products */,
+				A56DEAC0785A79486BBD6007 /* Pods */,
+				6F11893A7003C450F6B32E6C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,8 +109,9 @@
 		DAFCB25720123A5B009A6D34 /* project-showcase-ios */ = {
 			isa = PBXGroup;
 			children = (
-				DA3B1218201FF0B20049260C /* Model */,
 				DAFCB25820123A5B009A6D34 /* AppDelegate.swift */,
+				DA3B1218201FF0B20049260C /* Model */,
+				ED75F27A2087FE2500438975 /* Views */,
 				DAFCB26F20123ACF009A6D34 /* ViewControllers */,
 				DAFCB27C20124037009A6D34 /* Utilities */,
 				DAFCB26220123A5B009A6D34 /* Assets.xcassets */,
@@ -114,6 +143,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		ED75F27A2087FE2500438975 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */,
+				ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAFCB26A20123A5B009A6D34 /* Build configuration list for PBXNativeTarget "project-showcase-ios" */;
 			buildPhases = (
+				6EE114EDA52F6D2D24955DDF /* [CP] Check Pods Manifest.lock */,
 				DAFCB25120123A5B009A6D34 /* Sources */,
 				DAFCB25220123A5B009A6D34 /* Frameworks */,
 				DAFCB25320123A5B009A6D34 /* Resources */,
+				B2C3B9DFAE567190340E8DC8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,11 +214,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
+				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,
 				DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6EE114EDA52F6D2D24955DDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-project-showcase-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2C3B9DFAE567190340E8DC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DAFCB25120123A5B009A6D34 /* Sources */ = {
@@ -189,6 +269,7 @@
 				DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */,
 				DA3B121E201FF89E0049260C /* Contact.swift in Sources */,
 				DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */,
+				ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */,
 				DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */,
 				DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */,
 				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
@@ -322,6 +403,7 @@
 		};
 		DAFCB26B20123A5B009A6D34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -337,6 +419,7 @@
 		};
 		DAFCB26C20123A5B009A6D34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

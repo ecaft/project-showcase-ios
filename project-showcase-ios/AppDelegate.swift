@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setNavAndStatusBarAppearance() {
         UINavigationBar.appearance().barTintColor = UIColor.ecaftRed
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.ecaftWhite]
+        UINavigationBar.appearance().isTranslucent = false
         UIApplication.shared.statusBarStyle = .lightContent // Set status bar to white
     }
 
