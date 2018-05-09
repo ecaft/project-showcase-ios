@@ -177,7 +177,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         let barHeights = (self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height + 100
         
         //edited CGRect to make margins and center it
-        teamTableView = UITableView(frame: CGRect(x: 0, y: segControl.frame.maxY+16, width: screenSize.width-28, height: screenSize.height - barHeights - segControl.frame.height), style: UITableViewStyle.plain) //sets tableview to size of view below status bar and nav bar
+        teamTableView = UITableView(frame: CGRect(x: 0, y: segControl.frame.maxY+45, width: screenSize.width-28, height: screenSize.height - (segControl.frame.maxY+45)), style: UITableViewStyle.plain) //sets tableview to size of view below status bar and nav bar
         
         // UI
         teamTableView.backgroundColor = UIColor.backgroundGray
@@ -194,7 +194,6 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         teamTableView.register(UINib(nibName: "TeamTableViewCell", bundle: nil), forCellReuseIdentifier: "TeamTableViewCell")
         
         //layout
-        teamTableView.frame.origin.y = segControl.frame.maxY+16
         teamTableView.center.x = view.center.x
         
         view.addSubview(teamTableView)

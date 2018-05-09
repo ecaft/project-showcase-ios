@@ -21,6 +21,9 @@
 		DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27620123B38009A6D34 /* MapViewController.swift */; };
 		DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */; };
 		DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27D2012405D009A6D34 /* Extensions.swift */; };
+		ED5FE588209D75EE00C19C8F /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */; };
+		ED5FE58B209D7B0500C19C8F /* ContactInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5FE589209D7B0500C19C8F /* ContactInfoTableViewCell.swift */; };
+		ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */; };
 		ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */; };
 		ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,9 @@
 		DAFCB27620123B38009A6D34 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "project-showcase-ios/ViewControllers/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "project-showcase-ios/ViewControllers/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27D2012405D009A6D34 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamDetailViewController.swift; path = "project-showcase-ios/Views/TeamDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		ED5FE589209D7B0500C19C8F /* ContactInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoTableViewCell.swift; sourceTree = "<group>"; };
+		ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoTableViewCell.xib; sourceTree = "<group>"; };
 		ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +133,7 @@
 			children = (
 				DAFCB27520123B38009A6D34 /* ListViewController.swift */,
 				DAFCB27420123B38009A6D34 /* BrowseViewController.swift */,
+				ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */,
 				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
 				DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */,
 			);
@@ -148,6 +155,8 @@
 			children = (
 				ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */,
 				ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */,
+				ED5FE589209D7B0500C19C8F /* ContactInfoTableViewCell.swift */,
+				ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
+				ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */,
 				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,
 				DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */,
 			);
@@ -268,9 +278,11 @@
 				DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */,
 				DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */,
 				DA3B121E201FF89E0049260C /* Contact.swift in Sources */,
+				ED5FE58B209D7B0500C19C8F /* ContactInfoTableViewCell.swift in Sources */,
 				DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */,
 				ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */,
 				DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */,
+				ED5FE588209D75EE00C19C8F /* TeamDetailViewController.swift in Sources */,
 				DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */,
 				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
 				DA3B121A201FF0DB0049260C /* Team.swift in Sources */,
