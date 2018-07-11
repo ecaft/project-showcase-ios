@@ -32,24 +32,24 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     private func addViewControllers() {
         let teamViewModel = TeamViewModel()
-        let listVC = ListViewController()
-        listVC.teamViewModel = teamViewModel
-        
-        let listBarItem = UITabBarItem(title: "My List", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "homeRed"))
-        listVC.tabBarItem = listBarItem
-        listVC.teamViewModel = teamViewModel
         
         let browseVC = BrowseViewController()
         let browseBarItem = UITabBarItem(title: "Browse", image: #imageLiteral(resourceName: "list"), selectedImage: #imageLiteral(resourceName: "listRed"))
         browseVC.tabBarItem = browseBarItem
         browseVC.teamViewModel = teamViewModel
         
+        let listVC = ListViewController()
+        let listBarItem = UITabBarItem(title: "My List", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "homeRed"))
+        listVC.tabBarItem = listBarItem
+        listVC.teamViewModel = teamViewModel
+        
         let mapVC = MapViewController()
         mapVC.teamViewModel = teamViewModel
         let mapBarItem = UITabBarItem(title: "Map", image: #imageLiteral(resourceName: "map"), selectedImage: #imageLiteral(resourceName: "mapRed"))
         mapVC.tabBarItem = mapBarItem
         
-        let controllers = [listVC, browseVC, mapVC]
+        
+        let controllers = [browseVC, listVC, mapVC]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
         
     }
