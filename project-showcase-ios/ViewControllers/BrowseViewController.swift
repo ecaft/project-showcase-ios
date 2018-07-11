@@ -17,7 +17,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     var teamTableView = UITableView()
     
     //Segmented Control
-    let segmentTitles : [String] = ["M.Eng", "Undergrad", "Project Teams"]
+    let segmentTitles : [String] = ["M.Eng", "Undergrad Project Teams"]
     var segControl = UISegmentedControl()
     
     
@@ -53,6 +53,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Disable top bounce on filterView
         scrollView.bounces = scrollView.contentOffset.y > 0
+        scrollView.showsVerticalScrollIndicator = true
     }
     
     /*** -------------------- FILTER BUTTON ----------------------***/
