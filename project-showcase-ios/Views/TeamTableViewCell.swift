@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol AddRemoveDelegate {
+    func unstar(team: Team)
+    func star(team: Team)
+}
+
 class TeamTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     
+    var teamForThisCell: Team!
+    var delegate: AddRemoveDelegate?
     static let identifier = "TeamTableViewCell"
     
     var name: String? {
@@ -30,7 +37,20 @@ class TeamTableViewCell: UITableViewCell {
     
     var img: UIImage? {
         didSet {
-            starImage.image = img
+            starButton.setImage(img, for: .normal)
+        }
+    }
+    
+    @IBAction func starPressed(_ sender: UIButton) {
+        if teamForThisCell.isFavorited {
+            teamForThisCell.isFavorited = false
+            starButton.setImage(#imageLiteral(resourceName: "starUnfilled"), for: .normal)
+            delegate?.unstar(team: teamForThisCell)
+            
+        } else {
+            teamForThisCell.isFavorited = true
+            starButton.setImage(#imageLiteral(resourceName: "starFilled"), for: .normal)
+            delegate?.star(team: teamForThisCell)
         }
     }
     

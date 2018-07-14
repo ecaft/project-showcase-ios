@@ -9,10 +9,14 @@
 import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
+    
+    var allTeamsList: [Team] = []
+    var favoriteList: [Team] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        setupTempTeamList()
         addViewControllers()
         
         // UI changes
@@ -26,6 +30,19 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             viewController.tabBarItem.setTitleTextAttributes(selectedItem, for: .selected)
         }
     }
+    
+    //hard coded
+    private func setupTempTeamList() {
+        let contact = Contact(name: "Claire", major: "ORIE", gradYear: "2017", email: "ab123@cornell.edu")
+        let t1 = Team(teamName: "A", type: "Meng", department: "CS", descrip: "a", contacts: [contact])
+        let t2 = Team(teamName: "B", type: "proj", department: "MAE", descrip: "b", contacts: [contact])
+        let t3 = Team(teamName: "C", type: "Meng", department: "ORIE", descrip: "c", contacts: [contact])
+        
+        allTeamsList.append(t1)
+        allTeamsList.append(t2)
+        allTeamsList.append(t3)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -37,18 +54,21 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let browseBarItem = UITabBarItem(title: "Browse", image: #imageLiteral(resourceName: "list"), selectedImage: #imageLiteral(resourceName: "listRed"))
         browseVC.tabBarItem = browseBarItem
         browseVC.teamViewModel = teamViewModel
+        browseVC.allTeamsList = allTeamsList
+
         
         let listVC = ListViewController()
         let listBarItem = UITabBarItem(title: "My List", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "homeRed"))
         listVC.tabBarItem = listBarItem
         listVC.teamViewModel = teamViewModel
+        listVC.allTeamsList = allTeamsList
+
         
         let mapVC = MapViewController()
-        mapVC.teamViewModel = teamViewModel
         let mapBarItem = UITabBarItem(title: "Map", image: #imageLiteral(resourceName: "map"), selectedImage: #imageLiteral(resourceName: "mapRed"))
         mapVC.tabBarItem = mapBarItem
-        
-        
+        mapVC.teamViewModel = teamViewModel
+
         let controllers = [browseVC, listVC, mapVC]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
         

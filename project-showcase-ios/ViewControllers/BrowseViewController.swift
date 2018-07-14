@@ -9,12 +9,22 @@
 import UIKit
 import SnapKit
 
-class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, AddRemoveDelegate {
+    
+    func unstar(team: Team) {
+        teamTableView.reloadData()
+    }
+    
+    func star(team: Team) {
+        teamTableView.reloadData()
+    }
 
     let screenSize : CGRect = UIScreen.main.bounds
     var teamViewModel: TeamViewModel!
     var searchBar: UISearchBar!
     var teamTableView = UITableView()
+    var allTeamsList: [Team] = []
+
     
     //Segmented Control
     let segmentTitles : [String] = ["M.Eng", "Undergrad Project Teams"]
@@ -40,8 +50,10 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         makeSearchBar()
         makeSegControl()
         makeTableView()
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        teamTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,7 +187,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     /*** -------------------- TABLE VIEW -------------------- ***/
     private func makeTableView() {
         //Total height of nav bar, status bar, tab bar
-        let barHeights = (self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height + 100
+        //let barHeights = (self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height + 100
         
         //edited CGRect to make margins and center it
         teamTableView = UITableView(frame: CGRect(x: 0, y: segControl.frame.maxY+45, width: screenSize.width-28, height: screenSize.height - (segControl.frame.maxY+45)), style: UITableViewStyle.plain) //sets tableview to size of view below status bar and nav bar
@@ -183,7 +195,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         // UI
         teamTableView.backgroundColor = UIColor.backgroundGray
         teamTableView.separatorStyle = UITableViewCellSeparatorStyle.none // Removes bottom border for cells
-        teamTableView.contentInset = UIEdgeInsetsMake(-27, 0, 0, 0) // Removes padding above first cell
+        //teamTableView.contentInset = UIEdgeInsetsMake(-27, 0, 0, 0) // Removes padding above first cell
         
         //Remove vertical scroll bar
         teamTableView.showsVerticalScrollIndicator = false;
@@ -245,7 +257,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         }
         return teamViewModel.displayedTeams.count
         */
-        return 10
+        return allTeamsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -264,10 +276,18 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         }
         
         //Stops cell turning grey when click on it
+        customCell.delegate = self
         customCell.selectionStyle = .none
-        customCell.name = "Team Name"
-        customCell.department = "Department Name"
-        customCell.img = #imageLiteral(resourceName: "starUnfilled") //have to figure out how to pass through properly (maybe with boolean?)
+        let team = allTeamsList[indexPath.row]
+        customCell.teamForThisCell = team
+        customCell.name = team.teamName
+        customCell.department = team.department
+        if (team.isFavorited) {
+            customCell.img = #imageLiteral(resourceName: "starFilled")
+        } else {
+            customCell.img = #imageLiteral(resourceName: "starUnfilled")
+        }
+        //have to figure out how to pass through properly (maybe with boolean?)
         /*
         customCell.name = team.teamName
         customCell.department = team.department
