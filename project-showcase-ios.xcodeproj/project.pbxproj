@@ -13,7 +13,6 @@
 		DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121B201FF3AB0049260C /* StringDict.swift */; };
 		DA3B121E201FF89E0049260C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121D201FF89E0049260C /* Contact.swift */; };
 		DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25820123A5B009A6D34 /* AppDelegate.swift */; };
-		DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */; };
 		DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26220123A5B009A6D34 /* Assets.xcassets */; };
 		DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */; };
 		DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27420123B38009A6D34 /* BrowseViewController.swift */; };
@@ -26,6 +25,7 @@
 		ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */; };
 		ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */; };
 		ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */; };
+		EDC87A4E213DE38800C37204 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,6 @@
 		DA3B121D201FF89E0049260C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = "project-showcase-ios/Utilities/Contact.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB25520123A5B009A6D34 /* project-showcase-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-showcase-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFCB25820123A5B009A6D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAFCB26020123A5B009A6D34 /* project_showcase_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = project_showcase_ios.xcdatamodel; sourceTree = "<group>"; };
 		DAFCB26220123A5B009A6D34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFCB26520123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFCB26720123A5B009A6D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoTableViewCell.xib; sourceTree = "<group>"; };
 		ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
+		EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				DAFCB26220123A5B009A6D34 /* Assets.xcassets */,
 				DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */,
 				DAFCB26720123A5B009A6D34 /* Info.plist */,
-				DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */,
+				EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */,
 			);
 			path = "project-showcase-ios";
 			sourceTree = "<group>";
@@ -224,6 +224,7 @@
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
 				ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */,
+				EDC87A4E213DE38800C37204 /* GoogleService-Info.plist in Resources */,
 				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,
 				DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */,
 			);
@@ -257,11 +258,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -275,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAFCB26120123A5B009A6D34 /* project_showcase_ios.xcdatamodeld in Sources */,
 				DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */,
 				DA3B121E201FF89E0049260C /* Contact.swift in Sources */,
 				ED5FE58B209D7B0500C19C8F /* ContactInfoTableViewCell.swift in Sources */,
@@ -467,19 +479,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DAFCB25F20123A5B009A6D34 /* project_showcase_ios.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DAFCB26020123A5B009A6D34 /* project_showcase_ios.xcdatamodel */,
-			);
-			currentVersion = DAFCB26020123A5B009A6D34 /* project_showcase_ios.xcdatamodel */;
-			path = project_showcase_ios.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DAFCB24D20123A5B009A6D34 /* Project object */;
 }
