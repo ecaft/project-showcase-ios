@@ -306,15 +306,14 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
+
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
-        let companyDetailsVC = CompanyDetailsViewController()
-        companyDetailsVC.companyViewModel = companyViewModel
-        companyDetailsVC.listViewModel = listViewModel
-        companyDetailsVC.company = companyViewModel?.displayedCompanies[indexPath.row]
-        companyDetailsVC.isFavorite = (companyViewModel?.displayedCompanies[indexPath.row].isFavorite)!
-        self.show(companyDetailsVC, sender: nil)
-        */
+        let teamDetailVC = TeamDetailViewController()
+        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu")
+        teamDetailVC.contact = claire
+        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", department: "None", descrip: "blablabla", contacts: [claire])
+        self.show(teamDetailVC, sender: nil)
+        
         print("Selected table row \(indexPath.row)")
     }
     

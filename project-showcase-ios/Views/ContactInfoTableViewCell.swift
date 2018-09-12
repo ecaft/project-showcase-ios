@@ -12,9 +12,7 @@ class ContactInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contactName: UILabel!
     @IBOutlet weak var contactMajorYear: UILabel!
-    @IBOutlet weak var emailImage: UIImageView!
     @IBOutlet weak var contactEmail: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

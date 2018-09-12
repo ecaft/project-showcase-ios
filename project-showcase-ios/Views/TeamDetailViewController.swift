@@ -58,7 +58,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //Create name label
         name = UILabel(frame: CGRect(x: 0, y: 0, width: 116, height: 50)) //same x value as department so name & department label are aligned
         name.textAlignment = NSTextAlignment.left
-        name.text = "Team Name" //team.teamName
+        name.text = team.teamName
         name.font = UIFont(name: "Avenir-Roman", size: 36)
         
         //Make name into go into another line if necessary
@@ -84,7 +84,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //Create Team Information textview
         teamInfo = UITextView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
         teamInfo.textAlignment = NSTextAlignment.left
-        teamInfo.text = "This is the team description." //team.descrip
+        teamInfo.text = team.descrip
         teamInfo.font = UIFont(name: "Avenir-Roman", size: 36)
         self.tableView.tableHeaderView?.addSubview(teamInfo)
         
@@ -121,7 +121,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //Rows: Set num of rows per section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 3 //team.contacts.count
+        return team.contacts.count
     }
     
     //Rows: Set height for each row
@@ -145,10 +145,10 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //set up cell
         contact = team.contacts[indexPath.row]
-        cell.contactName.text = "Erik Gustafson" //contact.name
-        cell.contactMajorYear.text = "Mechanical Engineering '18"//"\(contact.major) \(contact.gradYear)"
-        cell.contactEmail.text = "eog5@cornell.edu" //contact.email
-        cell.emailImage.image = UIImage(named: "starFilled")
+        cell.contactName.text = contact.name
+        cell.contactMajorYear.text = "\(contact.major) \(contact.gradYear)"
+        cell.contactEmail.text = contact.email
+        //cell.emailImage.image = UIImage(named: "starFilled")
         //cell.emailIcon.image = UIImage("emailIcon") //UPLOAD EMAIL IMAGE IN ASSETS
         
         return cell
