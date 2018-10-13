@@ -85,17 +85,17 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     /*** -------------------- SEARCH BAR -------------------- ***/
     // Called whenever text is changed.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //TeamViewModel?.applySearch(searchText: searchText)
-        //companyTableView.reloadData()
+        teamViewModel?.applySearch(searchText: searchText)
+        teamTableView.reloadData()
         
         // If clear button pressed
         if searchText.isEmpty {
             searchBar.resignFirstResponder()
             view.endEditing(true)
             
-            //teamViewModel?.clearSearchBarCompanies()
-            //teamViewModel?.resetDisplayedCompanies()
-            //companyTableView.reloadData()
+            teamViewModel?.clearSearchBarTeams()
+            teamViewModel?.resetDisplayedTeams()
+            teamTableView.reloadData()
         }
     }
     
@@ -105,9 +105,9 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         searchBar.resignFirstResponder()
         view.endEditing(true)
         
-        //TeamViewModel?.clearSearchBarCompanies()
-        //TeamViewModel?.resetDisplayedCompanies()
-        //companyTableView.reloadData()
+        teamViewModel?.clearSearchBarTeams()
+        teamViewModel?.resetDisplayedTeams()
+        teamTableView.reloadData()
     }
     
     // When done button is pressed
