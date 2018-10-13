@@ -67,7 +67,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let mapVC = MapViewController()
         let mapBarItem = UITabBarItem(title: "Map", image: #imageLiteral(resourceName: "map"), selectedImage: #imageLiteral(resourceName: "mapRed"))
         mapVC.tabBarItem = mapBarItem
-        mapVC.teamViewModel = teamViewModel
+        //mapVC.teamViewModel = teamViewModel
 
         let controllers = [browseVC, listVC, mapVC]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
