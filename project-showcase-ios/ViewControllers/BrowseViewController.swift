@@ -281,7 +281,6 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         let team = allTeamsList[indexPath.row]
         customCell.teamForThisCell = team
         customCell.name = team.teamName
-        customCell.department = team.department
         if (team.isFavorited) {
             customCell.img = #imageLiteral(resourceName: "starFilled")
         } else {
@@ -311,7 +310,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         let teamDetailVC = TeamDetailViewController()
         let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu")
         teamDetailVC.contact = claire
-        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", department: "None", descrip: "blablabla", contacts: [claire])
+        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", descrip: "blablabla", contacts: [claire])
         self.show(teamDetailVC, sender: nil)
         
         print("Selected table row \(indexPath.row)")

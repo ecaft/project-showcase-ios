@@ -147,7 +147,6 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         let team = favoriteList[indexPath.row]
         customCell.teamForThisCell = team
         customCell.name = team.teamName
-        customCell.department = team.department
         customCell.img = #imageLiteral(resourceName: "starFilled")
         
         /*
@@ -172,7 +171,7 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         let teamDetailVC = TeamDetailViewController()
         let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu")
         teamDetailVC.contact = claire
-        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", department: "None", descrip: "blablabla", contacts: [claire])
+        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", descrip: "blablabla", contacts: [claire])
         self.show(teamDetailVC, sender: nil)
         
         print("Selected table row \(indexPath.row)")

@@ -34,9 +34,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     //hard coded
     private func setupTempTeamList() {
         let contact = Contact(name: "Claire", major: "ORIE", gradYear: "2017", email: "ab123@cornell.edu")
-        let t1 = Team(teamName: "A", type: "Meng", department: "CS", descrip: "a", contacts: [contact])
-        let t2 = Team(teamName: "B", type: "proj", department: "MAE", descrip: "b", contacts: [contact])
-        let t3 = Team(teamName: "C", type: "Meng", department: "ORIE", descrip: "c", contacts: [contact])
+        let t1 = Team(teamName: "A", type: "Meng", descrip: "a", contacts: [contact])
+        let t2 = Team(teamName: "B", type: "proj", descrip: "b", contacts: [contact])
+        let t3 = Team(teamName: "C", type: "Meng", descrip: "c", contacts: [contact])
         
         allTeamsList.append(t1)
         allTeamsList.append(t2)

@@ -25,7 +25,7 @@
 		ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */; };
 		ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */; };
 		ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */; };
-		EDC87A4E213DE38800C37204 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */; };
+		ED7C047721723AF900B19371 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED7C047621723AF800B19371 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		ED5FE58A209D7B0500C19C8F /* ContactInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoTableViewCell.xib; sourceTree = "<group>"; };
 		ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
-		EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED7C047621723AF800B19371 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				DAFCB26220123A5B009A6D34 /* Assets.xcassets */,
 				DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */,
 				DAFCB26720123A5B009A6D34 /* Info.plist */,
-				EDC87A4D213DE38800C37204 /* GoogleService-Info.plist */,
+				ED7C047621723AF800B19371 /* GoogleService-Info.plist */,
 			);
 			path = "project-showcase-ios";
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
 				ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */,
-				EDC87A4E213DE38800C37204 /* GoogleService-Info.plist in Resources */,
+				ED7C047721723AF900B19371 /* GoogleService-Info.plist in Resources */,
 				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,
 				DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */,
 			);
