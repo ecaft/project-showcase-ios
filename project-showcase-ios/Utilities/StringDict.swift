@@ -11,7 +11,6 @@ import Foundation
 enum StringDict: String {
     case teamName = "teamName"
     case type = "teamType"
-    case department = "department"
     case descrip = "descrip"
     case contacts = "contacts"
     case contactName = "contactName"

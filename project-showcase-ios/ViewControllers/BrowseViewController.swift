@@ -308,7 +308,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
         let teamDetailVC = TeamDetailViewController()
-        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu")
+        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", team: " ", teamType: " ")
         teamDetailVC.contact = claire
         teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", descrip: "blablabla", contacts: [claire])
         self.show(teamDetailVC, sender: nil)

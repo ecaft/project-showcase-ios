@@ -34,6 +34,60 @@ class TeamViewModel: NSObject {
         }
     }
     
+    func addTeamToAllTeams(_ team: Team) {
+        allTeams.append(team)
+    }
+    
+    func addTeamToDisplayedTeams(_ team: Team) {
+        displayedTeams.append(team)
+    }
+    
+    func addTeamToProjectTeams(_ team: Team) {
+        projectTeams.append(team)
+    }
+    
+    func addTeamtoMengTeams(_ team: Team) {
+        mengTeams.append(team)
+    }
+    
+    func addTeamtoResearchTeams(_ team: Team) {
+        researchTeams.append(team)
+    }
+    
+    func removeTeam(index: Int) {
+        allTeams.remove(at: index)
+    }
+    
+    func clearTeams() {
+        allTeams = []
+    }
+    
+    func addTeamtoFavoriteTeams(_ team: Team) {
+        favoritedTeams.append(team)
+    }
+    
+    func addContactToTeam(teamName: String, teamType: String, contact: Contact) {
+        if teamType == "Undergrad Project Team" {
+            for projectTeam in projectTeams{
+                if teamName == projectTeam.teamName {
+                    projectTeam.contacts.append(contact)
+                }
+            }
+        } else if(teamType == "M.Eng"){
+            for mEngTeam in mengTeams{
+                if teamName == mEngTeam.teamName {
+                    mEngTeam.contacts.append(contact)
+                }
+            }
+        } else {
+            for team in allTeams{
+                if teamName == team.teamName {
+                    team.contacts.append(contact)
+                }
+            }
+        }
+    }
+    
     /*** -------------------- FILTERING -------------------- ***/
     // Assumption: Filter Section ONLY contains selected Filter Option Items
 //    func applyFilters(filterSect: FilterSection) {

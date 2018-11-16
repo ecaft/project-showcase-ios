@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, AddRemoveDelegate {
+    
+    //Database Variables
+    var databaseRef: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    var databaseHandle_contacts: DatabaseHandle!
+    
+    
     func unstar(team: Team) {
         makeFavoriteList()
         teamTableView.reloadData()
@@ -19,11 +28,13 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         teamTableView.reloadData()
     }
 
+    //variables
     let screenSize : CGRect = UIScreen.main.bounds
     var teamViewModel: TeamViewModel!
     var teamTableView = UITableView()
     var allTeamsList: [Team] = []
     var favoriteList: [Team] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +42,13 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         self.view.backgroundColor = UIColor.backgroundGray
         makeFavoriteList()
         makeTableView()
+        
+        
+        // Load data from firebase
+        databaseRef = Database.database().reference()
+        
+        loadData()
+        allTeamsList = teamViewModel.allTeams
     }
     
     func viewLoadSetup() {
@@ -43,6 +61,43 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         viewLoadSetup()
     }
     
+    func loadData() {
+        //Retrive posts and listen for changes
+        databaseHandle = databaseRef?.child("teams").observe(.value, with: { (snapshot) in
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let team = Team()
+                team.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
+                team.descrip = item.childSnapshot(forPath: StringDict.descrip.rawValue).value as! String
+                team.type = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                
+                if team.type == "Undergrad Project Team" {
+                    self.teamViewModel?.addTeamToProjectTeams(team)
+                }
+                if team.type == "M.Eng" {
+                    self.teamViewModel?.addTeamtoMengTeams(team)
+                }
+                
+                self.teamViewModel?.addTeamToAllTeams(team)
+                self.teamViewModel?.addTeamToDisplayedTeams(team)
+            }
+        })
+        databaseHandle_contacts = databaseRef?.child("contacts").observe(.value, with: { (snapshot) in
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let contact = Contact()
+                contact.name = item.childSnapshot(forPath: StringDict.contactName.rawValue).value as! String
+                contact.major = item.childSnapshot(forPath: StringDict.major.rawValue).value as! String
+                contact.gradYear = item.childSnapshot(forPath: StringDict.gradYear.rawValue).value as! String
+                contact.email = item.childSnapshot(forPath: StringDict.email.rawValue).value as! String
+                contact.team = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
+                contact.teamType = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                
+                self.teamViewModel.addContactToTeam(teamName: contact.team, teamType: contact.teamType, contact: contact)
+            }
+        })
+        //debug
+        print(teamViewModel.allTeams)
+    }
+    
     private func makeFavoriteList() {
         favoriteList = []
         for team in allTeamsList {
@@ -50,7 +105,10 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
                 favoriteList.append(team)
             }
         }
+        teamViewModel.favoritedTeams = favoriteList
     }
+    
+    /***------------------------TABLE VIEW---------------------------***/
     private func makeTableView() {
         //Total height of nav bar, status bar, tab bar
         //let barHeights = (self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height + 100
@@ -169,7 +227,7 @@ class ListViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
         let teamDetailVC = TeamDetailViewController()
-        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu")
+        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", team:" ", teamType: " ")
         teamDetailVC.contact = claire
         teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", descrip: "blablabla", contacts: [claire])
         self.show(teamDetailVC, sender: nil)
