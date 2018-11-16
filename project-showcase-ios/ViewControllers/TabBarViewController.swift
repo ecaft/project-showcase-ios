@@ -54,14 +54,12 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let browseBarItem = UITabBarItem(title: "Browse", image: #imageLiteral(resourceName: "list"), selectedImage: #imageLiteral(resourceName: "listRed"))
         browseVC.tabBarItem = browseBarItem
         browseVC.teamViewModel = teamViewModel
-        browseVC.allTeamsList = allTeamsList
 
         
-        let listVC = ListViewController()
-        let listBarItem = UITabBarItem(title: "My List", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "homeRed"))
-        listVC.tabBarItem = listBarItem
-        listVC.teamViewModel = teamViewModel
-        listVC.allTeamsList = allTeamsList
+        let favListVC = FavoritesListViewController()
+        let favListBarItem = UITabBarItem(title: "My List", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "homeRed"))
+        favListVC.tabBarItem = favListBarItem
+        favListVC.teamViewModel = teamViewModel
 
         
         let mapVC = MapViewController()
@@ -69,7 +67,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         mapVC.tabBarItem = mapBarItem
         //mapVC.teamViewModel = teamViewModel
 
-        let controllers = [browseVC, listVC, mapVC]
+        let controllers = [browseVC, favListVC, mapVC]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
         
     }

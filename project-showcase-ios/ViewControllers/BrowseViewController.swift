@@ -8,8 +8,15 @@
 
 import UIKit
 import SnapKit
+import Firebase
+import FirebaseDatabase
 
 class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, AddRemoveDelegate {
+    
+    //Database Variables
+    var databaseRef: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    var databaseHandle_contacts: DatabaseHandle!
     
     func unstar(team: Team) {
         teamTableView.reloadData()
@@ -23,7 +30,6 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     var teamViewModel: TeamViewModel!
     var searchBar: UISearchBar!
     var teamTableView = UITableView()
-    var allTeamsList: [Team] = []
 
     
     //Segmented Control
@@ -50,6 +56,11 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         makeSearchBar()
         makeSegControl()
         makeTableView()
+        
+        // Load data from firebase
+        databaseRef = Database.database().reference()
+        
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +77,43 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         // Disable top bounce on filterView
         scrollView.bounces = scrollView.contentOffset.y > 0
         scrollView.showsVerticalScrollIndicator = true
+    }
+    
+    func loadData() {
+        //Retrive posts and listen for changes
+        databaseHandle = databaseRef?.child("teams").observe(.value, with: { (snapshot) in
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let team = Team()
+                team.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
+                team.descrip = item.childSnapshot(forPath: StringDict.descrip.rawValue).value as! String
+                team.type = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                
+                if team.type == "Undergrad Project Team" {
+                    self.teamViewModel?.addTeamToProjectTeams(team)
+                }
+                if team.type == "M.Eng" {
+                    self.teamViewModel?.addTeamtoMengTeams(team)
+                }
+                
+                self.teamViewModel?.addTeamToAllTeams(team)
+                self.teamViewModel?.addTeamToDisplayedTeams(team)
+            }
+        })
+        databaseHandle_contacts = databaseRef?.child("contacts").observe(.value, with: { (snapshot) in
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                let contact = Contact()
+                contact.name = item.childSnapshot(forPath: StringDict.contactName.rawValue).value as! String
+                contact.major = item.childSnapshot(forPath: StringDict.major.rawValue).value as! String
+                contact.gradYear = item.childSnapshot(forPath: StringDict.gradYear.rawValue).value as! String
+                contact.email = item.childSnapshot(forPath: StringDict.email.rawValue).value as! String
+                contact.team = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
+                contact.teamType = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                
+                self.teamViewModel.addContactToTeam(teamName: contact.team, teamType: contact.teamType, contact: contact)
+            }
+        })
+        //debug
+        print(teamViewModel.allTeams)
     }
     
     /*** -------------------- FILTER BUTTON ----------------------***/
@@ -257,7 +305,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         }
         return teamViewModel.displayedTeams.count
         */
-        return allTeamsList.count
+        return teamViewModel.allTeams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -278,7 +326,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         //Stops cell turning grey when click on it
         customCell.delegate = self
         customCell.selectionStyle = .none
-        let team = allTeamsList[indexPath.row]
+        let team = teamViewModel.allTeams[indexPath.row]
         customCell.teamForThisCell = team
         customCell.name = team.teamName
         if (team.isFavorited) {

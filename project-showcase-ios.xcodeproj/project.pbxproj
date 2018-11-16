@@ -16,7 +16,7 @@
 		DAFCB26320123A5B009A6D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26220123A5B009A6D34 /* Assets.xcassets */; };
 		DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFCB26420123A5B009A6D34 /* LaunchScreen.storyboard */; };
 		DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27420123B38009A6D34 /* BrowseViewController.swift */; };
-		DAFCB27820123B38009A6D34 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27520123B38009A6D34 /* ListViewController.swift */; };
+		DAFCB27820123B38009A6D34 /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27520123B38009A6D34 /* FavoritesListViewController.swift */; };
 		DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27620123B38009A6D34 /* MapViewController.swift */; };
 		DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */; };
 		DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCB27D2012405D009A6D34 /* Extensions.swift */; };
@@ -42,7 +42,7 @@
 		DAFCB26520123A5B009A6D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFCB26720123A5B009A6D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAFCB27420123B38009A6D34 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowseViewController.swift; path = "project-showcase-ios/ViewControllers/BrowseViewController.swift"; sourceTree = SOURCE_ROOT; };
-		DAFCB27520123B38009A6D34 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = "project-showcase-ios/ViewControllers/ListViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DAFCB27520123B38009A6D34 /* FavoritesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesListViewController.swift; path = "project-showcase-ios/ViewControllers/FavoritesListViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27620123B38009A6D34 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "project-showcase-ios/ViewControllers/MapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "project-showcase-ios/ViewControllers/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DAFCB27D2012405D009A6D34 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		DAFCB26F20123ACF009A6D34 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DAFCB27520123B38009A6D34 /* ListViewController.swift */,
+				DAFCB27520123B38009A6D34 /* FavoritesListViewController.swift */,
 				DAFCB27420123B38009A6D34 /* BrowseViewController.swift */,
 				ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */,
 				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
@@ -298,7 +298,7 @@
 				DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */,
 				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
 				DA3B121A201FF0DB0049260C /* Team.swift in Sources */,
-				DAFCB27820123B38009A6D34 /* ListViewController.swift in Sources */,
+				DAFCB27820123B38009A6D34 /* FavoritesListViewController.swift in Sources */,
 				DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */,
 				DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */,
 			);
