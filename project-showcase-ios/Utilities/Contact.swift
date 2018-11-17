@@ -15,15 +15,15 @@ class Contact: NSObject, NSCoding {
     var major: String = ""
     var gradYear: String = ""
     var email: String = ""
-    var team: String = ""
+    var teamName: String = ""
     var teamType: String = ""
     
-    init(name: String, major: String, gradYear: String, email: String, team: String, teamType: String) {
+    init(name: String, major: String, gradYear: String, email: String, teamName: String, teamType: String) {
         self.name = name
         self.major = major
         self.gradYear = gradYear
         self.email = email
-        self.team = team
+        self.teamName = teamName
         self.teamType = teamType
     }
     
@@ -32,7 +32,7 @@ class Contact: NSObject, NSCoding {
     }
     
     override var description: String {
-        return "Name: \(name) | Major: \(major) | Graduation Year: \(gradYear) | Email: \(email) | Team: \(team) (\(teamType))"
+        return "Name: \(name) | Major: \(major) | Graduation Year: \(gradYear) | Email: \(email) | Team: \(teamName) (\(teamType))"
     }
     
     // NSCoding
@@ -41,8 +41,8 @@ class Contact: NSObject, NSCoding {
         major = aDecoder.decodeObject(forKey: StringDict.major.rawValue) as? String ?? ""
         gradYear = aDecoder.decodeObject(forKey: StringDict.gradYear.rawValue) as? String ?? ""
         email = aDecoder.decodeObject(forKey: StringDict.email.rawValue) as? String ?? ""
-        team = aDecoder.decodeObject(forKey: StringDict.teamName.rawValue) as? String ?? ""
-        teamType = aDecoder.decodeObject(forKey: StringDict.type.rawValue) as? String ?? ""
+        teamName = aDecoder.decodeObject(forKey: StringDict.teamName.rawValue) as? String ?? ""
+        teamType = aDecoder.decodeObject(forKey: StringDict.teamType.rawValue) as? String ?? ""
     }
     
     func encode(with aCoder: NSCoder) {
@@ -50,7 +50,7 @@ class Contact: NSObject, NSCoding {
         aCoder.encode(major, forKey: StringDict.major.rawValue)
         aCoder.encode(gradYear, forKey: StringDict.gradYear.rawValue)
         aCoder.encode(email, forKey: StringDict.email.rawValue)
-        aCoder.encode(team, forKey: StringDict.teamName.rawValue)
-        aCoder.encode(teamType, forKey: StringDict.type.rawValue)
+        aCoder.encode(teamName, forKey: StringDict.teamName.rawValue)
+        aCoder.encode(teamType, forKey: StringDict.teamType.rawValue)
     }
 }

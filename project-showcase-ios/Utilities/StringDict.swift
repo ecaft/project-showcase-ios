@@ -10,7 +10,7 @@ import Foundation
 
 enum StringDict: String {
     case teamName = "teamName"
-    case type = "teamType"
+    case teamType = "teamType"
     case descrip = "descrip"
     case contacts = "contacts"
     case contactName = "contactName"

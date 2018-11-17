@@ -86,12 +86,12 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 let team = Team()
                 team.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
                 team.descrip = item.childSnapshot(forPath: StringDict.descrip.rawValue).value as! String
-                team.type = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                team.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
                 
-                if team.type == "Undergrad Project Team" {
+                if team.teamType == "Undergrad Project Team" {
                     self.teamViewModel?.addTeamToProjectTeams(team)
                 }
-                if team.type == "M.Eng" {
+                if team.teamType == "M.Eng" {
                     self.teamViewModel?.addTeamtoMengTeams(team)
                 }
                 
@@ -106,10 +106,10 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 contact.major = item.childSnapshot(forPath: StringDict.major.rawValue).value as! String
                 contact.gradYear = item.childSnapshot(forPath: StringDict.gradYear.rawValue).value as! String
                 contact.email = item.childSnapshot(forPath: StringDict.email.rawValue).value as! String
-                contact.team = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
-                contact.teamType = item.childSnapshot(forPath: StringDict.type.rawValue).value as! String
+                contact.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
+                contact.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
                 
-                self.teamViewModel.addContactToTeam(teamName: contact.team, teamType: contact.teamType, contact: contact)
+                self.teamViewModel.addContactToTeam(teamName: contact.teamName, teamType: contact.teamType, contact: contact)
             }
         })
         //debug
@@ -356,7 +356,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
         let teamDetailVC = TeamDetailViewController()
-        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", team: " ", teamType: " ")
+        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", teamName: " ", teamType: " ")
         teamDetailVC.contact = claire
         teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", descrip: "blablabla", contacts: [claire])
         self.show(teamDetailVC, sender: nil)
