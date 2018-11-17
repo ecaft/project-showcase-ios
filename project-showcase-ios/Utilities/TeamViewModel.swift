@@ -96,54 +96,55 @@ class TeamViewModel: NSObject {
     
     /*** -------------------- FILTERING -------------------- ***/
     // Assumption: Filter Section ONLY contains selected Filter Option Items
-//    func applyFilters(filterSect: FilterSection) {
-//        var filteredSet: Set<Team> = Set<Team> (allTeams)
-//        
-//        //Get interesection of filtered companies from 3 sections
-//        let filterItems = filterSect.items
-//        //If "All" option selected for majors/positions. Sponsorship's isAllSelected = always false.
-//        if(!filterSect.isAllSelected) {
-//            let selectedTeams = getTeams(matching: filterSect)
-//            let selectedSet = Set(selectedTeams)
-//            filteredSet = filteredSet.intersection(selectedSet)
-//        }
-//        
-//        // Update filtered companies
-//        filteredTeams = Array(filteredSet)
-//        
-//        //Return intersectin of companies filtered by filters & companies filtered by search bar
-//        if (searchBarTeams.count > 0) {
-//            let searchBarSet: Set<Team> = Set(searchBarTeams)
-//            displayedTeams = Array(filteredSet.intersection(searchBarSet))
-//        } else {
-//            displayedTeams = Array(filteredSet)
-//        }
-//        
-//        //Companies displayed in alphabetical order
-//        sortDisplayedTeamsAlphabetically()
-//    }
+    func applyFilters(filterSections: [FilterSection]) {
+        var filteredTeamsSet: Set<Team> = Set(allTeams)
+        
+        //Get interesection of filtered teams
+        for filterSect in filterSections {
+            
+            if(!filterSect.isAllSelected) {
+                let selectedTeams = getTeams(matching: filterSect)
+                let selectedTeamSet = Set(selectedTeams)
+                filteredTeamsSet = filteredTeamsSet.intersection(selectedTeamSet)
+            }
+        }
+        
+        // Update filtered companies
+        filteredTeams = Array(filteredTeamsSet)
+        
+        //Return intersectin of companies filtered by filters & companies filtered by search bar
+        if (searchBarTeams.count > 0) {
+            let searchBarTeamsSet: Set<Team> = Set(searchBarTeams)
+            displayedTeams = Array(filteredTeamsSet.intersection(searchBarTeamsSet))
+        } else {
+            displayedTeams = Array(filteredTeamsSet)
+        }
+        
+        //Companies displayed in alphabetical order
+        sortDisplayedTeamsAlphabetically()
+    }
     
-//    private func getTeams(matching filterSection: FilterSection) -> [Team] {
-//        var filteredSet: Set<Team> = Set<Team> ()
-//        switch filterSection.type {
-//        case .Majors:
-//            for filterOptItem in filterSection.items {
-//                let searchValue = filterOptItem.searchValue?.lowercased()
-//                for team in allTeams {
-//                    //Insensitive case search
-//                    let isFound = team.majors.contains(where: { $0.caseInsensitiveCompare(searchValue!) == ComparisonResult.orderedSame })
-//                    if (isFound) {
-//                        filteredTeams.insert(team)
-//                    }
-//                }
-//            }
-//        }
-//        
-//        let alphabeticalFilteredTeams = Array(filteredTeams).sorted {
-//            return $0.teamName.lowercased() < $1.teamName.lowercased()
-//        }
-//        return alphabeticalFilteredTeams
-//    }
+    private func getTeams(matching filterSection: FilterSection) -> [Team] {
+        var filteredTeams: Set<Team> = Set<Team> ()
+        switch filterSection.type {
+        case .Majors:
+            for filterOptItem in filterSection.items {
+                let searchValue = filterOptItem.searchValue?.lowercased()
+                for team in allTeams {
+                    //Insensitive case search
+                    let isFound = team.majors.contains{ $0.caseInsensitiveCompare(searchValue!) == ComparisonResult.orderedSame }
+                    if (isFound) {
+                        filteredTeams.insert(team)
+                    }
+                }
+            }
+        }
+        
+        let alphabeticalFilteredTeams = Array(filteredTeams).sorted {
+            return $0.teamName.lowercased() < $1.teamName.lowercased()
+        }
+        return alphabeticalFilteredTeams
+    }
     
     /*** -------------------- SEARCHING -------------------- ***/
     // Update search bar companies & displayed companies to show companies matching search

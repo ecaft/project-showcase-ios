@@ -29,8 +29,6 @@ class Filter: NSObject {
 
 enum FilterType: String {
     case Majors = "Majors"
-    case OpenPositions = "OpenPositions"
-    case Sponsorship = "Sponsorship"
 }
 
 class FilterOptionItem: NSObject {

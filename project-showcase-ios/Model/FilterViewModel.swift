@@ -24,59 +24,60 @@ class FilterViewModel: NSObject {
                   Filter(title: "Operations Research And Engineering (ORE)", searchValue: "operations research"),
                   Filter(title: "Science of Earth Systems (SES)", searchValue: "science of earth systems")]
     
+    
     // Contains all filtered sections displayed on table view
-    var filterSection: FilterSection = FilterSection()
+    var filterSections: [FilterSection] = []
     
     // Contains filter sections w/ only selected filter option items
-    private(set) var selectedFilterSection: FilterSection = FilterSection()
+    private(set) var selectedFilterSections: [FilterSection] = []
     
     override init() {
         super.init()
-        self.filterSection = getDefaultFilterSection()
+        self.filterSections = getDefaultFilterSections()
     }
     
     // Set filters to default filters (all majors, all positions, sponsorship not selected)
     func resetFiltersToDefault() {
-        self.filterSection = getDefaultFilterSection()
+        self.filterSections = getDefaultFilterSections()
     }
     
-    // Filters is off if default filters are selected (all majors, all positions, sponsorship not selected)
     func isFiltersOn() -> Bool {
         var allMajors: Bool = false
-        var allPositions: Bool = false
-        var supportsSponsorship: Bool = false
+        //var allPositions: Bool = false
+        //var supportsSponsorship: Bool = false
         
-        for filterSect in filterSection {
+        for filterSect in filterSections {
             switch filterSect.type {
             case .Majors:
                 allMajors = filterSect.isAllSelected
-            case .OpenPositions:
-                allPositions = filterSect.isAllSelected
-            case .Sponsorship:
-                supportsSponsorship = filterSect.items[0].isSelected
+            //case .OpenPositions:
+              //  allPositions = filterSect.isAllSelected
+            //case .Sponsorship:
+              //  supportsSponsorship = filterSect.items[0].isSelected
             }
         }
         
-        let isDefault = allMajors && allPositions && !(supportsSponsorship)
+        let isDefault = allMajors
         return !(isDefault)
     }
     
     /* Returns filter section with containing ONLY selected filter option items
-       If "All" option selected, append filter sect */
-    func getSelectedFilterSection() -> FilterSection {
-        var selectedFilterSect: FilterSection = FilterSection();
-
-        // If select "All" option for majors or positions. Sponsorship's isAllSelected = always false
-        if(filterSect.isAllSelected) {
-           selectedFilterSect = filterSect
+     If "All" option selected, append filter sect */
+    func getSelectedFilterSections() -> [FilterSection] {
+        var selectedFilterSections: [FilterSection] = []
+        for filterSect in filterSections {
+            // If select "All" option for majors or positions. Sponsorship's isAllSelected = always false
+            if(filterSect.isAllSelected) {
+                selectedFilterSections.append(filterSect)
+            }
+                // If specific filters are selected
+            else {
+                let selectedItems = getSelectedFilterOptItems(from: filterSect.items)
+                let newSect = FilterSection(name: filterSect.name, items: selectedItems, type: filterSect.type, isAllSelected: filterSect.isAllSelected, isExpanded: filterSect.isExpanded)
+                selectedFilterSections.append(newSect)
+            }
         }
-        // If specific filters are selected
-        else {
-            let selectedItems = getSelectedFilterOptItems(from: filterSect.items)
-            let newSect = FilterSection(name: filterSect.name, items: selectedItems, type: filterSect.type, isAllSelected: filterSect.isAllSelected, isExpanded: filterSect.isExpanded)
-            selectedFilterSect = filterSect
-        }
-        return selectedFilterSecti
+        return selectedFilterSections
     }
     
     // MARK: - Private functions
@@ -88,16 +89,11 @@ class FilterViewModel: NSObject {
     private func getDefaultFilterSections() -> [FilterSection] {
         // Create array of filterOptionItmes from model filter items
         let majorsItems = majors.map { FilterOptionItem(item: $0, type: FilterType.Majors) }
-        let openPosItems = openPositions.map { FilterOptionItem(item: $0, type: FilterType.OpenPositions) }
-        let sponsorshipItems = sponsorship.map { FilterOptionItem(item: $0, type: FilterType.Sponsorship, isSelected: false) }
         
         // Create sections containing list of filtering options
         let majorsSect = FilterSection(name: "Majors", items: majorsItems, type: FilterType.Majors)
-        let openPosSect = FilterSection(name: "Open Positions", items: openPosItems, type: FilterType.OpenPositions)
-        let sponsorshipSect = FilterSection(name: "Sponsorship", items: sponsorshipItems, type: FilterType.Sponsorship)
-        sponsorshipSect.isAllSelected = false //B/c only has 1 cell
         
-        let filterSections = [majorsSect, openPosSect, sponsorshipSect]
+        let filterSections = [majorsSect]
         return filterSections
     }
 }
@@ -123,16 +119,16 @@ extension FilterViewModel: UITableViewDataSource {
                 cell.titleLabel.textColor = UIColor.ecaftBlackFaded
             }
         }
-        //If "All" option not selected
+            //If "All" option not selected
         else {
             cell.titleLabel.textColor = UIColor.ecaftBlack
             let isSelected = filterItems[indexPath.row].isSelected
             cell.checkBtnImageView.image = isSelected ? #imageLiteral(resourceName: "filterCheckmark") : nil
             
             //If Sponsorship section selected, also toggle label
-            if (indexPath.section == 2) {
-                cell.titleLabel.text = isSelected ? "Supports Sponsorship" : "Does Not Support Sponsorship" 
-            }
+            //if (indexPath.section == 2) {
+              //  cell.titleLabel.text = isSelected ? "Supports Sponsorship" : "Does Not Support Sponsorship"
+            //}
         }
         return cell
     }
@@ -151,5 +147,5 @@ extension FilterViewModel: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterSections[section].isExpanded ? filterSections[section].items.count : 0
     }
-
+    
 }

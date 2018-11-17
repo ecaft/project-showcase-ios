@@ -15,8 +15,9 @@ enum StringDict: String {
     case descrip = "descrip"
     case contacts = "contacts"
     case contactName = "contactName"
-    case major = "major"
+    case majors = "majors"
     case gradYear = "gradYear"
     case email = "email"
     case isFavorited = "isFavorited"
+    case major = "major"
 }

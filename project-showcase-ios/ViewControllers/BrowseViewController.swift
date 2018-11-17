@@ -11,7 +11,8 @@ import SnapKit
 import Firebase
 import FirebaseDatabase
 
-class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, AddRemoveDelegate {
+class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource,
+    AddRemoveDelegate, FilterSelectionProtocol {
     
     //Database Variables
     var databaseRef: DatabaseReference!
@@ -28,6 +29,8 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
     let screenSize : CGRect = UIScreen.main.bounds
     var teamViewModel: TeamViewModel!
+    var filterViewModel: FilterViewModel?
+    var selectedFilterSects: [FilterSection]?
     var searchBar: UISearchBar!
     var teamTableView = UITableView()
 
@@ -51,7 +54,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         self.view.backgroundColor = UIColor.backgroundGray
         
         // Do any additional setup after loading the view.
-        makeFilterButton()
+        makeFilterBtn()
         makeSearchBar()
         makeSegControl()
         makeTableView()
@@ -62,7 +65,15 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        toggleFilterBtnText()
+        // Apply selected filters
+        if let selectedFilterSects = selectedFilterSects {
+            teamViewModel?.applyFilters(filterSections: selectedFilterSects)
+            teamTableView.reloadData()
+        }
+        makeFilterBtn()
         teamTableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,16 +127,35 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     }
     
     /*** -------------------- FILTER BUTTON ----------------------***/
-    func makeFilterButton(){
-        let filterBarButton = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.plain, target: self, action: #selector(BrowseViewController.filterButtonTapped(_:)))
-        filterBarButton.tintColor = UIColor.white
-    
-        self.navigationItem.rightBarButtonItem = filterBarButton
+    @objc func filterButtonTapped() {
+        var filterViewModel: FilterViewModel
+        if (self.filterViewModel != nil) {
+            filterViewModel = self.filterViewModel!
+        }
+        else {
+            self.filterViewModel = FilterViewModel()
+            filterViewModel = self.filterViewModel!
+        }
+        let filtersVC = FiltersViewController(filterViewModel: filterViewModel)
+        filtersVC.filterSelectionDelegate = self
+        self.navigationController?.pushViewController(filtersVC, animated: true)
     }
-
-    @IBAction func filterButtonTapped(_ sender:UIBarButtonItem!)
-    {
-        print("filter button tapped")
+    
+    // Set selected filters to filters selected from Filters VC
+    func setSelectedFiltersTo(filtersSent: [FilterSection]) {
+        self.selectedFilterSects = filtersSent
+    }
+    
+    // Updatedfilter bar button text
+    private func toggleFilterBtnText() {
+        let btnText = (filterViewModel?.isFiltersOn() ?? false) ? "Filters On" : "Filters Off"
+        self.navigationItem.rightBarButtonItem?.title = btnText
+    }
+    
+    private func makeFilterBtn() {
+        let btnText = (filterViewModel?.isFiltersOn() ?? false) ? "Filters On" : "Filters Off"
+        let filterButton = UIBarButtonItem(title: btnText, style: .plain, target: self, action: #selector(filterButtonTapped))
+        self.navigationItem.rightBarButtonItem = filterButton
     }
 
     
@@ -359,7 +389,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         let teamDetailVC = TeamDetailViewController()
         let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", teamName: " ", teamType: " ")
         teamDetailVC.contact = claire
-        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", intro: "hi", descrip: "blablabla", contacts: [claire])
+        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", intro: "hi", descrip: "blablabla", contacts: [claire], majors: ["chemical engineering"])
         self.show(teamDetailVC, sender: nil)
         
         print("Selected table row \(indexPath.row)")

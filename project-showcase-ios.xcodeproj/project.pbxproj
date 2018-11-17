@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5814F2015FB5A12815684607 /* Pods_project_showcase_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */; };
+		7E17EB5521A0700A003627B7 /* FilterOptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */; };
+		7E17EB5721A07013003627B7 /* FilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5621A07013003627B7 /* FilterSection.swift */; };
+		7E17EB5921A0701B003627B7 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5821A0701B003627B7 /* FilterViewModel.swift */; };
+		7E17EB5B21A0710C003627B7 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E17EB5A21A0710C003627B7 /* FilterTableViewCell.xib */; };
+		7E17EB5D21A07116003627B7 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5C21A07116003627B7 /* FilterTableViewCell.swift */; };
+		7E17EB5F21A071CD003627B7 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5E21A071CC003627B7 /* FiltersViewController.swift */; };
+		7E17EB6321A07299003627B7 /* CollapsibleFilterTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB6221A07299003627B7 /* CollapsibleFilterTableViewHeader.swift */; };
 		DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA11F268201FFCE000ABE707 /* TeamViewModel.swift */; };
 		DA3B121A201FF0DB0049260C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B1219201FF0DB0049260C /* Team.swift */; };
 		DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B121B201FF3AB0049260C /* StringDict.swift */; };
@@ -31,6 +38,13 @@
 /* Begin PBXFileReference section */
 		295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.release.xcconfig"; sourceTree = "<group>"; };
+		7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterOptionItem.swift; path = "project-showcase-ios/Model/FilterOptionItem.swift"; sourceTree = SOURCE_ROOT; };
+		7E17EB5621A07013003627B7 /* FilterSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterSection.swift; path = "project-showcase-ios/Model/FilterSection.swift"; sourceTree = SOURCE_ROOT; };
+		7E17EB5821A0701B003627B7 /* FilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterViewModel.swift; path = "project-showcase-ios/Model/FilterViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		7E17EB5A21A0710C003627B7 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
+		7E17EB5C21A07116003627B7 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		7E17EB5E21A071CC003627B7 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersViewController.swift; path = "project-showcase-ios/ViewControllers/FiltersViewController.swift"; sourceTree = SOURCE_ROOT; };
+		7E17EB6221A07299003627B7 /* CollapsibleFilterTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleFilterTableViewHeader.swift; sourceTree = "<group>"; };
 		D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_showcase_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA11F268201FFCE000ABE707 /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamViewModel.swift; path = "project-showcase-ios/Utilities/TeamViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		DA3B1219201FF0DB0049260C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Team.swift; path = "project-showcase-ios/Model/Team.swift"; sourceTree = SOURCE_ROOT; };
@@ -86,6 +100,9 @@
 		DA3B1218201FF0B20049260C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E17EB5821A0701B003627B7 /* FilterViewModel.swift */,
+				7E17EB5621A07013003627B7 /* FilterSection.swift */,
+				7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */,
 				DA3B1219201FF0DB0049260C /* Team.swift */,
 				DA3B121D201FF89E0049260C /* Contact.swift */,
 				DA11F268201FFCE000ABE707 /* TeamViewModel.swift */,
@@ -133,6 +150,7 @@
 			children = (
 				DAFCB27520123B38009A6D34 /* FavoritesListViewController.swift */,
 				DAFCB27420123B38009A6D34 /* BrowseViewController.swift */,
+				7E17EB5E21A071CC003627B7 /* FiltersViewController.swift */,
 				ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */,
 				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
 				DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */,
@@ -153,6 +171,9 @@
 		ED75F27A2087FE2500438975 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E17EB6221A07299003627B7 /* CollapsibleFilterTableViewHeader.swift */,
+				7E17EB5C21A07116003627B7 /* FilterTableViewCell.swift */,
+				7E17EB5A21A0710C003627B7 /* FilterTableViewCell.xib */,
 				ED75F27D2087FF5600438975 /* TeamTableViewCell.swift */,
 				ED75F27E2087FF5600438975 /* TeamTableViewCell.xib */,
 				ED5FE589209D7B0500C19C8F /* ContactInfoTableViewCell.swift */,
@@ -223,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
+				7E17EB5B21A0710C003627B7 /* FilterTableViewCell.xib in Resources */,
 				ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */,
 				ED7C047721723AF900B19371 /* GoogleService-Info.plist in Resources */,
 				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,
@@ -290,6 +312,8 @@
 			files = (
 				DAFCB27920123B38009A6D34 /* MapViewController.swift in Sources */,
 				DA3B121E201FF89E0049260C /* Contact.swift in Sources */,
+				7E17EB5921A0701B003627B7 /* FilterViewModel.swift in Sources */,
+				7E17EB5721A07013003627B7 /* FilterSection.swift in Sources */,
 				ED5FE58B209D7B0500C19C8F /* ContactInfoTableViewCell.swift in Sources */,
 				DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */,
 				ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */,
@@ -299,8 +323,12 @@
 				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
 				DA3B121A201FF0DB0049260C /* Team.swift in Sources */,
 				DAFCB27820123B38009A6D34 /* FavoritesListViewController.swift in Sources */,
+				7E17EB6321A07299003627B7 /* CollapsibleFilterTableViewHeader.swift in Sources */,
 				DAFCB25920123A5B009A6D34 /* AppDelegate.swift in Sources */,
+				7E17EB5D21A07116003627B7 /* FilterTableViewCell.swift in Sources */,
 				DAFCB27E2012405D009A6D34 /* Extensions.swift in Sources */,
+				7E17EB5F21A071CD003627B7 /* FiltersViewController.swift in Sources */,
+				7E17EB5521A0700A003627B7 /* FilterOptionItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
