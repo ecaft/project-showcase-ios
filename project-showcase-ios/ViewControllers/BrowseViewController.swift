@@ -97,6 +97,8 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 team.descrip = item.childSnapshot(forPath: StringDict.descrip.rawValue).value as! String
                 team.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
                 team.intro = item.childSnapshot(forPath: StringDict.intro.rawValue).value as! String
+                let majors = item.childSnapshot(forPath: StringDict.majors.rawValue).value as! String
+                team.majors = majors.components(separatedBy: ", ")
                 
                 if team.teamType == "Undergrad Project Team" {
                     self.teamViewModel?.addTeamToProjectTeams(team)
