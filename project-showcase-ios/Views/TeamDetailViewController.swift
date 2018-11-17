@@ -14,7 +14,6 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var tableView = UITableView()
     var headerView = UIView()
     var team: Team!
-    var contact: Contact!
     var teamViewModel: TeamViewModel!
     
     //Table view properties
@@ -82,10 +81,10 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         */
         
         //Create Team Information textview
-        teamInfo = UITextView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
+        teamInfo = UITextView(frame: CGRect(x: 0, y: name.frame.height, width: tableView.frame.width, height: 60))
         teamInfo.textAlignment = NSTextAlignment.left
         teamInfo.text = team.descrip
-        teamInfo.font = UIFont(name: "Avenir-Roman", size: 36)
+        teamInfo.font = UIFont(name: "Avenir-Roman", size: 20)
         self.tableView.tableHeaderView?.addSubview(teamInfo)
         
         
@@ -144,7 +143,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         //set up cell
-        contact = team.contacts[indexPath.row]
+        let contact = team.contacts[indexPath.row]
         cell.contactName.text = contact.name
         cell.contactMajorYear.text = "\(contact.major) \(contact.gradYear)"
         cell.contactEmail.text = contact.email

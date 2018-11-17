@@ -389,10 +389,22 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
         let teamDetailVC = TeamDetailViewController()
-        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", teamName: " ", teamType: " ")
-        teamDetailVC.contact = claire
-        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", intro: "hi", descrip: "blablabla", contacts: [claire], majors: ["chemical engineering"])
-        self.show(teamDetailVC, sender: nil)
+        switch(segControl.selectedSegmentIndex){
+        case 1:     //M.Eng Teams
+            let team = teamViewModel.mengTeams[indexPath.row]
+            teamDetailVC.team = team
+            self.show(teamDetailVC, sender: nil)
+            
+        case 2:     //Undergrad Project Teams
+            let team = teamViewModel.projectTeams[indexPath.row]
+            teamDetailVC.team = team
+            self.show(teamDetailVC, sender: nil)
+            
+        default:    //Default: All Teams
+            let team = teamViewModel.displayedTeams[indexPath.row]
+            teamDetailVC.team = team
+            self.show(teamDetailVC, sender: nil)
+        }
         
         print("Selected table row \(indexPath.row)")
     }

@@ -177,9 +177,8 @@ class FavoritesListViewController: UIViewController, UIScrollViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
         let teamDetailVC = TeamDetailViewController()
-        let claire = Contact(name: "Claire", major: "ORIE", gradYear: "1998", email: "yc2267@cornell.edu", teamName:" ", teamType: " ")
-        teamDetailVC.contact = claire
-        teamDetailVC.team = Team(teamName: "ECAFT", type: "Professional", intro: "hi", descrip: "blablabla", contacts: [claire], majors: ["chemical engineering"])
+        let team = favoriteList[indexPath.row]
+        teamDetailVC.team = team
         self.show(teamDetailVC, sender: nil)
         
         print("Selected table row \(indexPath.row)")
