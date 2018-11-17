@@ -36,26 +36,32 @@ class TeamViewModel: NSObject {
     
     func addTeamToAllTeams(_ team: Team) {
         allTeams.append(team)
+        //print("added team to allTeams!")
     }
     
     func addTeamToDisplayedTeams(_ team: Team) {
         displayedTeams.append(team)
+        //print("added team to displayedTeams!")
     }
     
     func addTeamToProjectTeams(_ team: Team) {
         projectTeams.append(team)
+        //print("added team to projectTeams!")
     }
     
     func addTeamtoMengTeams(_ team: Team) {
         mengTeams.append(team)
+        //print("added team to MengTeams!")
     }
     
     func addTeamtoResearchTeams(_ team: Team) {
         researchTeams.append(team)
+        //print("added team to researchTeams!")
     }
     
     func removeTeam(index: Int) {
         allTeams.remove(at: index)
+        //print("removed team!")
     }
     
     func clearTeams() {
