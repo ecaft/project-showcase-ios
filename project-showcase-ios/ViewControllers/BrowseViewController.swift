@@ -33,7 +33,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
     
     //Segmented Control
-    let segmentTitles : [String] = ["M.Eng", "Undergrad Project Teams"]
+    let segmentTitles : [String] = ["All Teams", "M.Eng", "Undergrad Project Teams"]
     var segControl = UISegmentedControl()
     
     
@@ -228,7 +228,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     @IBAction func segmentControlHandler(sender: UISegmentedControl){
         //Handler for when custom Segmented Control changes and will change the content of the following table depending on the value selected
         print("Selected segment index is: \(sender.selectedSegmentIndex)")
-        //tableView.reloadData()
+        teamTableView.reloadData()
     }
     
     
@@ -273,51 +273,26 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         return 1
     }
     
-    /*
-    //Section: Change font color and background color for section headers
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let screenSize : CGRect = UIScreen.main.bounds
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        //headerView.backgroundColor = UIColor.ecaftLightGray
-        
-        let label = UILabel(frame: CGRect(x: 0.05*screenSize.width, y: 0, width: screenSize.width, height: 0))
-        label.center.y = 0.5*headerView.frame.height
-        //label.text = teamViewModel?.sectionTitles[section]
-        label.font = UIFont.boldSystemFont(ofSize: 16.0)
-        //label.textColor = UIColor.ecaftBlack
-        
-        headerView.addSubview(label)
-        
-        return nil
-    }
-    */
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 120
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
-        /*
-        guard let teamViewModel = teamViewModel else {
-            return 0
+        if(segControl.selectedSegmentIndex==1) {  //M.Eng Teams
+            return teamViewModel.mengTeams.count
         }
-        return teamViewModel.displayedTeams.count
-        */
-        return teamViewModel.allTeams.count
+        else if(segControl.selectedSegmentIndex==2) {  //Undergrad Project Teams
+            return teamViewModel.projectTeams.count
+        }
+        else{   //Default: All Teams
+            print("default number of rows!")
+            return teamViewModel.allTeams.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        /*
-        guard let team = teamViewModel?.displayedTeams[indexPath.row],
-            let customCell: TeamTableViewCell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.identifier) as? TeamTableViewCell else {
-                print("BrowseViewController.swift - cellForRowAt method:  Team Table View dequeuing cell error")
-                return UITableViewCell()
-        }
-        */
-        
         guard let customCell: TeamTableViewCell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.identifier) as? TeamTableViewCell else {
             print("BrowseViewController.swift - cellForRowAt method:  Team Table View dequeuing cell error")
             return UITableViewCell()
@@ -326,19 +301,44 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         //Stops cell turning grey when click on it
         customCell.delegate = self
         customCell.selectionStyle = .none
-        let team = teamViewModel.allTeams[indexPath.row]
-        customCell.teamForThisCell = team
-        customCell.name = team.teamName
-        if (team.isFavorited) {
-            customCell.img = #imageLiteral(resourceName: "starFilled")
-        } else {
-            customCell.img = #imageLiteral(resourceName: "starUnfilled")
+        
+        //M.Eng Teams
+        if(segControl.selectedSegmentIndex==1) {
+            let team = teamViewModel.mengTeams[indexPath.row]
+            customCell.teamForThisCell = team
+            customCell.name = team.teamName
+            
+            if (team.isFavorited) {
+                customCell.img = #imageLiteral(resourceName: "starFilled")
+            } else {
+                customCell.img = #imageLiteral(resourceName: "starUnfilled")
+            }
         }
-        //have to figure out how to pass through properly (maybe with boolean?)
-        /*
-        customCell.name = team.teamName
-        customCell.department = team.department
-        */
+        //Undergrad Project Teams
+        else if(segControl.selectedSegmentIndex==2) {
+            let team = teamViewModel.projectTeams[indexPath.row]
+            customCell.teamForThisCell = team
+            customCell.name = team.teamName
+            
+            if (team.isFavorited) {
+                customCell.img = #imageLiteral(resourceName: "starFilled")
+            } else {
+                customCell.img = #imageLiteral(resourceName: "starUnfilled")
+            }
+        }
+        //Default: All Teams
+        else{
+            print("default: all teams!")
+            let team = teamViewModel.displayedTeams[indexPath.row]
+            customCell.teamForThisCell = team
+            customCell.name = team.teamName
+            
+            if (team.isFavorited) {
+                customCell.img = #imageLiteral(resourceName: "starFilled")
+            } else {
+                customCell.img = #imageLiteral(resourceName: "starUnfilled")
+            }
+        }
         
         customCell.backgroundColor = UIColor.white
         
