@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5814F2015FB5A12815684607 /* Pods_project_showcase_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */; };
+		7E1071CC21B212D200E60249 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1071CB21B212D200E60249 /* LoginViewController.swift */; };
 		7E17EB5521A0700A003627B7 /* FilterOptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */; };
 		7E17EB5721A07013003627B7 /* FilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5621A07013003627B7 /* FilterSection.swift */; };
 		7E17EB5921A0701B003627B7 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5821A0701B003627B7 /* FilterViewModel.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.release.xcconfig"; sourceTree = "<group>"; };
+		7E1071CB21B212D200E60249 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "project-showcase-ios/ViewControllers/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterOptionItem.swift; path = "project-showcase-ios/Model/FilterOptionItem.swift"; sourceTree = SOURCE_ROOT; };
 		7E17EB5621A07013003627B7 /* FilterSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterSection.swift; path = "project-showcase-ios/Model/FilterSection.swift"; sourceTree = SOURCE_ROOT; };
 		7E17EB5821A0701B003627B7 /* FilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterViewModel.swift; path = "project-showcase-ios/Model/FilterViewModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -151,6 +153,7 @@
 				DAFCB27520123B38009A6D34 /* FavoritesListViewController.swift */,
 				DAFCB27420123B38009A6D34 /* BrowseViewController.swift */,
 				7E17EB5E21A071CC003627B7 /* FiltersViewController.swift */,
+				7E1071CB21B212D200E60249 /* LoginViewController.swift */,
 				ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */,
 				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
 				DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */,
@@ -318,6 +321,7 @@
 				DA11F269201FFCE000ABE707 /* TeamViewModel.swift in Sources */,
 				ED75F27F2087FF5600438975 /* TeamTableViewCell.swift in Sources */,
 				DAFCB27720123B38009A6D34 /* BrowseViewController.swift in Sources */,
+				7E1071CC21B212D200E60249 /* LoginViewController.swift in Sources */,
 				ED5FE588209D75EE00C19C8F /* TeamDetailViewController.swift in Sources */,
 				DAFCB27B20123BD5009A6D34 /* TabBarViewController.swift in Sources */,
 				DA3B121C201FF3AB0049260C /* StringDict.swift in Sources */,
