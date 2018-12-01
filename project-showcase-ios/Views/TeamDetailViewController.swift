@@ -38,6 +38,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate      =   self
         tableView.dataSource    =   self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none //removes cell lines
+        tableView.backgroundColor = UIColor.backgroundGray
         
         //Regsiter custom cells and xib files
         tableView.register(UINib(nibName: "ContactInfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ContactInfoTableViewCell")
@@ -48,22 +49,43 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         createHeaderView() //put method in viewWillAppear so information updated depending on what company is tapped
+        //sizeHeaderToFit()
+        makeConstraints()
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        teamInfo.setContentOffset(CGPoint.zero, animated: false)
+    }
+    /*
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let header = tableView.tableHeaderView {
+            let newSize = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            header.frame.size.height = newSize.height
+        }
+    }*/
     
     func createHeaderView(){
-        headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 200))
+        headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 400))
         tableView.tableHeaderView = headerView
         
         //Create name label
-        name = UILabel(frame: CGRect(x: 0, y: 0, width: 116, height: 50)) //same x value as department so name & department label are aligned
+        name = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 80)) //same x value as department so name & department label are aligned
         name.textAlignment = NSTextAlignment.left
         name.text = team.teamName
-        name.font = UIFont(name: "Avenir-Roman", size: 36)
+        name.font = UIFont(name: "Avenir-Heavy", size: 50)
+        name.textColor = UIColor.ecaftRed
         
-        //Make name into go into another line if necessary
-        name.numberOfLines = 0 //set num of lines to infinity
-        name.lineBreakMode = .byWordWrapping
-        name.sizeToFit()
+        
+        //Make name go into another line if necessary
+        //name.numberOfLines = 0 //set num of lines to infinity
+        //name.lineBreakMode = .byWordWrapping
+        //name.sizeToFit()
+        name.numberOfLines = 3
+        name.adjustsFontSizeToFitWidth = true
+        name.minimumScaleFactor = 0.5
+        
         self.tableView.tableHeaderView?.addSubview(name)
         
         //Create Favorites Button
@@ -81,13 +103,79 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         */
         
         //Create Team Information textview
-        teamInfo = UITextView(frame: CGRect(x: 0, y: name.frame.height, width: tableView.frame.width, height: 60))
+        teamInfo = UITextView(frame: CGRect(x: 0, y: name.frame.height, width: tableView.frame.width, height: headerView.frame.height-name.frame.height))
         teamInfo.textAlignment = NSTextAlignment.left
         teamInfo.text = team.descrip
-        teamInfo.font = UIFont(name: "Avenir-Roman", size: 20)
+        teamInfo.font = UIFont(name: "Avenir-Light", size: 17)
+        teamInfo.backgroundColor = UIColor.backgroundGray
+        
+        //make sure textview is not editable
+        teamInfo.isEditable = false
+        teamInfo.isSelectable = false
+        
+        //flash scroll bar
+        teamInfo.flashScrollIndicators()
+        
         self.tableView.tableHeaderView?.addSubview(teamInfo)
         
         
+    }
+    /*
+    func sizeHeaderToFit() {
+        if let headerView = tableView.tableHeaderView {
+            
+            headerView.setNeedsLayout()
+            headerView.layoutIfNeeded()
+            
+            let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            var frame = headerView.frame
+            frame.size.height = height
+            headerView.frame = frame
+            
+            tableView.tableHeaderView = headerView
+        }
+    }*/
+    
+    private func makeConstraints() {
+        /*
+        companyIcon.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(headerView).offset(47)
+            make.left.equalTo(headerView).offset(20)
+            make.right.lessThanOrEqualTo(location.snp.left).offset(-20)
+            make.right.greaterThanOrEqualTo(location.snp.left).offset(-15).priority(.high)
+            make.width.equalTo(90).priority(.medium)
+            make.height.equalTo(90).priority(.medium)
+        }*/
+        name.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(headerView).offset(20)
+            make.right.equalTo(headerView).offset(-20).priority(.required)
+            make.left.equalTo(headerView).offset(20)
+            make.width.lessThanOrEqualTo(headerView.frame.width)
+        }
+        teamInfo.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(name.snp.bottom).offset(10)
+            make.right.equalTo(headerView).offset(-20).priority(.required)
+            make.left.equalTo(headerView).offset(20)
+            make.width.lessThanOrEqualTo(headerView.frame.width)
+            make.bottom.equalTo(headerView).offset(-15)
+        }/*
+        websiteButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(location.snp.bottom).offset(5)
+            make.left.equalTo(headerView).offset(0.5*headerView.frame.width)
+        }
+        
+        segControl.snp.makeConstraints { (make) -> Void in
+            make.top.greaterThanOrEqualTo(websiteButton.snp.bottom).offset(20).priority(.required)
+            make.bottom.greaterThanOrEqualTo(headerView.snp.bottom).offset(-20).priority(.required)
+            make.centerX.equalTo(headerView.snp.centerX)
+        }
+        cameraButton.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(segControl.snp.right).offset(15)
+            make.centerY.equalTo(segControl.snp.centerY)
+            make.width.equalTo(23)
+            make.height.equalTo(18)
+        }
+        */
     }
     
     
@@ -101,18 +189,23 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return sectionTitles[section]
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     //Section: Change font color and background color for section headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 25))
-        returnedView.backgroundColor = UIColor.backgroundGray
+        let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
+        //returnedView.backgroundColor = UIColor.white
         
-        let label = UILabel(frame: CGRect(x: 0.05*screenSize.width, y: 0, width: screenSize.width, height: 25))
+        let label = UILabel(frame: CGRect(x: 0.05*screenSize.width, y: 0, width: screenSize.width, height: 30))
         label.center.y = 0.5*label.frame.height
         label.text = sectionTitles[section]
-        label.font = UIFont.boldSystemFont(ofSize: 24.0)
+        label.font = UIFont(name: "Avenir-Medium", size: 25)
         //label.textColor = .ecaftDarkGray
         
         returnedView.addSubview(label)
+        
         
         return returnedView
     }
@@ -125,7 +218,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Rows: Set height for each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 50
+        return 100
     }
     
     //Table: Load in custom cells
@@ -133,6 +226,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactInfoTableViewCell", for: indexPath) as! ContactInfoTableViewCell
         
+        cell.backgroundColor = UIColor.backgroundGray
         /*
         //Remove left indent for text in cell
         cell.separatorInset = UIEdgeInsets.zero
@@ -149,6 +243,33 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.contactEmail.text = contact.email
         //cell.emailImage.image = UIImage(named: "starFilled")
         //cell.emailIcon.image = UIImage("emailIcon") //UPLOAD EMAIL IMAGE IN ASSETS
+        
+        //customize font
+        cell.contactName.font = UIFont(name: "Avenir-Roman", size: 18)
+        cell.contactMajorYear.font = UIFont(name: "Avenir-Light", size: 15)
+        cell.contactEmail.font = UIFont(name: "Avenir-Light", size: 15)
+        
+        //make constraints
+        let padding = 40
+        let btwnPadding = 5
+        cell.contactName.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(cell.snp.top).offset(btwnPadding)
+            make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(cell.snp.left).offset(padding)
+            make.width.lessThanOrEqualTo(cell.frame.width)
+        }
+        cell.contactMajorYear.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(cell.contactName.snp.bottom).offset(btwnPadding)
+            make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(cell.snp.left).offset(padding)
+            make.width.lessThanOrEqualTo(cell.frame.width)
+        }
+        cell.contactEmail.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(cell.contactMajorYear.snp.bottom).offset(btwnPadding)
+            make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(cell.snp.left).offset(padding)
+            make.width.lessThanOrEqualTo(cell.frame.width)
+        }
         
         return cell
     }
