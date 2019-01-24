@@ -28,14 +28,33 @@ class FavoritesListViewController: UIViewController, UIScrollViewDelegate, UITab
     var teamViewModel: TeamViewModel!
     var teamTableView = UITableView()
     var favoriteList: [Team] = []
+    var noListLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Want to Visit"
+        self.navigationItem.title = "Favorites"
         self.view.backgroundColor = UIColor.backgroundGray
         makeFavoriteList()
         makeTableView()
+        noListLabel = UILabel()
+        if (favoriteList.count==0) {
+            noListLabel.text = "Star a team to favorite it"
+        } else {
+            noListLabel.text = ""
+        }
+        noListLabel.textColor = UIColor.gray
+        noListLabel.font = UIFont.systemFont(ofSize: 18)
+        noListLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(noListLabel)
+        NSLayoutConstraint.activate([
+            //noListLabel.leadingAnchor.constraint(equalTo: noListLabel.trailingAnchor, constant: 32),
+            //noListLabel.centerXAnchor.constraint(equalTo: teamTableView.topAnchor, constant: -8),
+            noListLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            noListLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+        ])
+
     }
     
     func viewLoadSetup() {
@@ -155,6 +174,7 @@ class FavoritesListViewController: UIViewController, UIScrollViewDelegate, UITab
         let team = favoriteList[indexPath.row]
         customCell.teamForThisCell = team
         customCell.name = team.teamName
+        customCell.descrip = team.intro
         customCell.img = #imageLiteral(resourceName: "starFilled")
         
         /*
