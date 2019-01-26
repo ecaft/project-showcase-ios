@@ -110,7 +110,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             favoritesButton.setImage(#imageLiteral(resourceName: "starFilled").withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
         }
         
-        favoritesButton.tintColor = UIColor.yellow
+        favoritesButton.tintColor = UIColor.ecaftGold
         
         
         self.tableView.tableHeaderView?.addSubview(favoritesButton)

@@ -305,7 +305,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 120
+        return 100
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection
@@ -342,6 +342,37 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         let myColor : UIColor = UIColor(red:0.61, green:0.15, blue:0.12, alpha:1.0)
         customCell.contentView.layer.borderColor = myColor.cgColor
         customCell.selectionStyle = .none   //Stops cell turning grey when click on it
+        
+        //customize font
+        customCell.nameLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
+        customCell.descripLabel.font = UIFont(name: "Avenir-Light", size: 15)
+        
+        //make favorites star yellow
+        customCell.starButton.tintColor = UIColor.ecaftGold
+        customCell.starButton.imageView?.contentMode = .scaleAspectFit
+        
+        //make contraints
+        let padding = 20
+        let btwnPadding = 5
+        let leftPadding = 80
+        customCell.nameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(customCell.snp.top).offset(padding)
+            make.right.equalTo(customCell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(customCell.snp.left).offset(leftPadding)
+            make.width.lessThanOrEqualTo(customCell.frame.width)
+        }
+        customCell.descripLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(customCell.nameLabel.snp.bottom).offset(btwnPadding)
+            make.right.equalTo(customCell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(customCell.snp.left).offset(leftPadding)
+            make.width.lessThanOrEqualTo(customCell.frame.width)
+        }
+        customCell.starButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(customCell.snp.top).offset(padding)
+            make.right.equalTo(customCell.nameLabel.snp.left).offset(-padding)
+            make.left.equalTo(customCell.snp.left).offset(padding).priority(.required)
+            make.bottom.equalTo(customCell.snp.bottom).offset(padding)
+        }
         
         switch(segControl.selectedSegmentIndex){
             case 1:     //M.Eng Teams
