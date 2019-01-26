@@ -12,19 +12,27 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
     let screenSize : CGRect = UIScreen.main.bounds
     var tableView = UITableView()
-    var headerView = UIView()
     var team: Team!
     var teamViewModel: TeamViewModel!
+    
+    //Header View
+    var headerView = UIView()
+    var headerViewHeight : CGFloat = 400
+    var nameTopOffset : CGFloat = 20
+    var teamInfoTopOffset : CGFloat = 10
+    var teamInfoBottomOffset : CGFloat = 15
+    var headerViewPadding :CGFloat = 30
     
     //Table view properties
     var name = UILabel() //team name
     var isFavorite : Bool = false
+    var favoritesButton = UIButton()
     //var department = UILabel() //team's department >>IS THIS NEEDED??
     //var websiteButton = UIButton() //DO WE GET WEBSITE ADDRESSES PROVIDED?
     var teamInfo = UITextView()
     
     //Sections in tableview
-    let sectionTitles : [String] = ["Contact"]
+    let sectionTitles : [String] = ["Contacts"]
     var numOfSections = 1
     
     
@@ -32,6 +40,8 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         let navBarAndStatusBarHeight = (self.navigationController?.navigationBar.frame.size.height)!+UIApplication.shared.statusBarFrame.height
+        
+        isFavorite = team.isFavorited
         
         //set up tableview
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - navBarAndStatusBarHeight), style: UITableViewStyle.plain) //sets tableview to size of view below status bar and nav bar
@@ -43,28 +53,27 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //Regsiter custom cells and xib files
         tableView.register(UINib(nibName: "ContactInfoTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ContactInfoTableViewCell")
         
-        
         self.view.addSubview(self.tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         createHeaderView() //put method in viewWillAppear so information updated depending on what company is tapped
-        //sizeHeaderToFit()
+
         makeConstraints()
     }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         teamInfo.setContentOffset(CGPoint.zero, animated: false)
-    }
-    /*
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        if let header = tableView.tableHeaderView {
-            let newSize = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            header.frame.size.height = newSize.height
+        guard let headerView = tableView.tableHeaderView else {
+            return
         }
-    }*/
+        headerView.frame.size.height = headerViewHeight
+        
+        tableView.tableHeaderView = headerView
+        tableView.layoutIfNeeded()
+    }
+    
     
     func createHeaderView(){
         headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 400))
@@ -86,10 +95,25 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         name.adjustsFontSizeToFitWidth = true
         name.minimumScaleFactor = 0.5
         
+       
+        name.translatesAutoresizingMaskIntoConstraints = true
+        name.sizeToFit()
+        
         self.tableView.tableHeaderView?.addSubview(name)
         
         //Create Favorites Button
+        favoritesButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        favoritesButton.imageView?.contentMode = .scaleAspectFit
+        favoritesButton.setImage(#imageLiteral(resourceName: "starUnfilled").withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        favoritesButton.addTarget(self, action: #selector(TeamDetailViewController.favoritesButtonPressed(button:)), for: .touchUpInside)
+        if isFavorite == true {
+            favoritesButton.setImage(#imageLiteral(resourceName: "starFilled").withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        }
         
+        favoritesButton.tintColor = UIColor.yellow
+        
+        
+        self.tableView.tableHeaderView?.addSubview(favoritesButton)
         
         /* IS THIS NEEDED?
         //Create department label
@@ -103,7 +127,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         */
         
         //Create Team Information textview
-        teamInfo = UITextView(frame: CGRect(x: 0, y: name.frame.height, width: tableView.frame.width, height: headerView.frame.height-name.frame.height))
+        teamInfo = UITextView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 200))
         teamInfo.textAlignment = NSTextAlignment.left
         teamInfo.text = team.descrip
         teamInfo.font = UIFont(name: "Avenir-Light", size: 17)
@@ -112,29 +136,24 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //make sure textview is not editable
         teamInfo.isEditable = false
         teamInfo.isSelectable = false
+        teamInfo.isScrollEnabled = false
         
-        //flash scroll bar
-        teamInfo.flashScrollIndicators()
-        
+        adjustUITextViewHeight(arg: teamInfo)
         self.tableView.tableHeaderView?.addSubview(teamInfo)
         
+        headerViewHeight = name.frame.size.height + teamInfo.frame.size.height + nameTopOffset + teamInfoTopOffset + teamInfoBottomOffset + headerViewPadding
+        
+        print("name height = \(name.frame.size.height); teamInfo height = \(teamInfo.frame.size.height); headerViewHeight = \(headerViewHeight)")
         
     }
-    /*
-    func sizeHeaderToFit() {
-        if let headerView = tableView.tableHeaderView {
-            
-            headerView.setNeedsLayout()
-            headerView.layoutIfNeeded()
-            
-            let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-            var frame = headerView.frame
-            frame.size.height = height
-            headerView.frame = frame
-            
-            tableView.tableHeaderView = headerView
-        }
-    }*/
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
+    }
+    
+    
     
     private func makeConstraints() {
         /*
@@ -147,21 +166,24 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.height.equalTo(90).priority(.medium)
         }*/
         name.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(headerView).offset(20)
+            make.top.equalTo(headerView).offset(nameTopOffset)
             make.right.equalTo(headerView).offset(-20).priority(.required)
             make.left.equalTo(headerView).offset(20)
             make.width.lessThanOrEqualTo(headerView.frame.width)
         }
         teamInfo.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(name.snp.bottom).offset(10)
+            make.top.equalTo(name.snp.bottom).offset(teamInfoTopOffset)
             make.right.equalTo(headerView).offset(-20).priority(.required)
             make.left.equalTo(headerView).offset(20)
             make.width.lessThanOrEqualTo(headerView.frame.width)
-            make.bottom.equalTo(headerView).offset(-15)
+            //make.bottom.equalTo(headerView).offset(-15)
+        }
+        favoritesButton.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(name.snp.bottom).offset(0)
+            make.right.equalTo(name.snp.right).offset(0)
         }/*
-        websiteButton.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(location.snp.bottom).offset(5)
-            make.left.equalTo(headerView).offset(0.5*headerView.frame.width)
+        headerView.snp.makeConstraints{ (make) -> Void in
+            make.bottom.equalTo(teamInfo.snp.bottom).offset(15)
         }
         
         segControl.snp.makeConstraints { (make) -> Void in
@@ -176,6 +198,18 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.height.equalTo(18)
         }
         */
+    }
+    
+    @IBAction func favoritesButtonPressed(button: UIButton!){
+        if isFavorite == false{
+            isFavorite = true
+            team.isFavorited = true //save new status
+            favoritesButton.setImage(#imageLiteral(resourceName: "starFilled").withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        } else {
+            isFavorite = false
+            team.isFavorited = false //save new status
+            favoritesButton.setImage(#imageLiteral(resourceName: "starUnfilled").withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        }
     }
     
     
@@ -195,6 +229,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Section: Change font color and background color for section headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
         //returnedView.backgroundColor = UIColor.white
         
@@ -205,8 +240,6 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         //label.textColor = .ecaftDarkGray
         
         returnedView.addSubview(label)
-        
-        
         return returnedView
     }
     
