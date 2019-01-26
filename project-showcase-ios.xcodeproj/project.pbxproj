@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5814F2015FB5A12815684607 /* Pods_project_showcase_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CF99490400640EEE89310A /* Pods_project_showcase_ios.framework */; };
+		7E0315DA21FCDF0000C7DF34 /* MapViewController copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0315D821FCDEFF00C7DF34 /* MapViewController copy.xib */; };
+		7E0315DB21FCDF0000C7DF34 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0315D921FCDEFF00C7DF34 /* MapViewController.xib */; };
 		7E1071CC21B212D200E60249 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1071CB21B212D200E60249 /* LoginViewController.swift */; };
 		7E17EB5521A0700A003627B7 /* FilterOptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */; };
 		7E17EB5721A07013003627B7 /* FilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17EB5621A07013003627B7 /* FilterSection.swift */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		295888290088FA671D71CE03 /* Pods-project-showcase-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6EC886C01821FA92768A27 /* Pods-project-showcase-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-showcase-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-project-showcase-ios/Pods-project-showcase-ios.release.xcconfig"; sourceTree = "<group>"; };
+		7E0315D821FCDEFF00C7DF34 /* MapViewController copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MapViewController copy.xib"; path = "project-showcase-ios/ViewControllers/MapViewController copy.xib"; sourceTree = SOURCE_ROOT; };
+		7E0315D921FCDEFF00C7DF34 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = "project-showcase-ios/ViewControllers/MapViewController.xib"; sourceTree = SOURCE_ROOT; };
 		7E1071CB21B212D200E60249 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "project-showcase-ios/ViewControllers/LoginViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7E17EB5421A0700A003627B7 /* FilterOptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterOptionItem.swift; path = "project-showcase-ios/Model/FilterOptionItem.swift"; sourceTree = SOURCE_ROOT; };
 		7E17EB5621A07013003627B7 /* FilterSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterSection.swift; path = "project-showcase-ios/Model/FilterSection.swift"; sourceTree = SOURCE_ROOT; };
@@ -156,6 +160,8 @@
 				7E1071CB21B212D200E60249 /* LoginViewController.swift */,
 				ED5FE587209D75EE00C19C8F /* TeamDetailViewController.swift */,
 				DAFCB27620123B38009A6D34 /* MapViewController.swift */,
+				7E0315D821FCDEFF00C7DF34 /* MapViewController copy.xib */,
+				7E0315D921FCDEFF00C7DF34 /* MapViewController.xib */,
 				DAFCB27A20123BD5009A6D34 /* TabBarViewController.swift */,
 			);
 			name = ViewControllers;
@@ -247,7 +253,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFCB26620123A5B009A6D34 /* LaunchScreen.storyboard in Resources */,
+				7E0315DA21FCDF0000C7DF34 /* MapViewController copy.xib in Resources */,
 				7E17EB5B21A0710C003627B7 /* FilterTableViewCell.xib in Resources */,
+				7E0315DB21FCDF0000C7DF34 /* MapViewController.xib in Resources */,
 				ED5FE58C209D7B0500C19C8F /* ContactInfoTableViewCell.xib in Resources */,
 				ED7C047721723AF900B19371 /* GoogleService-Info.plist in Resources */,
 				ED75F2802087FF5600438975 /* TeamTableViewCell.xib in Resources */,

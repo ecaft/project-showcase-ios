@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     private var width: CGFloat = 0 // Width of scroll view frame
     private var height: CGFloat = 0 // Height of scroll view frame
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         self.title = "Map"
         self.viewHeight = getViewHeight()
@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
         makeMapScrollView()
         makeScrollViewTapGesRecognizer()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
     }
     
