@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Major + year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Met-hR-Xuf">
-                        <rect key="frame" x="16" y="43" width="317" height="21"/>
+                        <rect key="frame" x="16" y="32" width="317" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,6 +40,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPl-bD-mAY">
+                        <rect key="frame" x="16" y="53" width="317" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -47,6 +54,7 @@
                 <outlet property="contactEmail" destination="dRY-7D-Tyb" id="YYp-LS-yaK"/>
                 <outlet property="contactMajorYear" destination="Met-hR-Xuf" id="YpB-LA-7Hm"/>
                 <outlet property="contactName" destination="GvW-Hj-yyP" id="s6V-Jm-F0B"/>
+                <outlet property="contactTitle" destination="oPl-bD-mAY" id="1jV-yN-g1y"/>
             </connections>
             <point key="canvasLocation" x="-192.80000000000001" y="-10.794602698650676"/>
         </tableViewCell>

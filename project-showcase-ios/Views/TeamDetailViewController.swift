@@ -251,7 +251,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Rows: Set height for each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 100
+        return 120
     }
     
     //Table: Load in custom cells
@@ -274,6 +274,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.contactName.text = contact.name
         cell.contactMajorYear.text = "\(contact.major) \(contact.gradYear)"
         cell.contactEmail.text = contact.email
+        cell.contactTitle.text = contact.title
         //cell.emailImage.image = UIImage(named: "starFilled")
         //cell.emailIcon.image = UIImage("emailIcon") //UPLOAD EMAIL IMAGE IN ASSETS
         
@@ -281,6 +282,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.contactName.font = UIFont(name: "Avenir-Roman", size: 18)
         cell.contactMajorYear.font = UIFont(name: "Avenir-Light", size: 15)
         cell.contactEmail.font = UIFont(name: "Avenir-Light", size: 15)
+        cell.contactTitle.font = UIFont(name: "Avenir-Light", size: 15)
         
         //make constraints
         let padding = 40
@@ -297,8 +299,14 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.left.equalTo(cell.snp.left).offset(padding)
             make.width.lessThanOrEqualTo(cell.frame.width)
         }
-        cell.contactEmail.snp.makeConstraints { (make) -> Void in
+        cell.contactTitle.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(cell.contactMajorYear.snp.bottom).offset(btwnPadding)
+            make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
+            make.left.equalTo(cell.snp.left).offset(padding)
+            make.width.lessThanOrEqualTo(cell.frame.width)
+        }
+        cell.contactEmail.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(cell.contactTitle.snp.bottom).offset(btwnPadding)
             make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
             make.left.equalTo(cell.snp.left).offset(padding)
             make.width.lessThanOrEqualTo(cell.frame.width)
