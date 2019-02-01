@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure() //Sets up firebase
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        //let tabBarVC = TabBarViewController()
-        //tabBarVC.tabBar.barTintColor = UIColor.ecaftGray
-        let loginVC = LoginViewController()
+        let tabBarVC = TabBarViewController()
+        tabBarVC.tabBar.barTintColor = UIColor.ecaftGray
+        //let loginVC = BrowseViewController()
         
-        window?.rootViewController = UINavigationController(rootViewController: loginVC)
+        window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
         
         setNavAndStatusBarAppearance()
