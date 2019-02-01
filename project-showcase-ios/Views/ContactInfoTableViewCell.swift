@@ -14,6 +14,7 @@ class ContactInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var contactMajorYear: UILabel!
     @IBOutlet weak var contactEmail: UILabel!
     @IBOutlet weak var contactTitle: UILabel!
+    @IBOutlet weak var emailicon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

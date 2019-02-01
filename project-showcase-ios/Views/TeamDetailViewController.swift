@@ -251,7 +251,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Rows: Set height for each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 120
+        return 110
     }
     
     //Table: Load in custom cells
@@ -275,18 +275,20 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.contactMajorYear.text = "\(contact.major) \(contact.gradYear)"
         cell.contactEmail.text = contact.email
         cell.contactTitle.text = contact.title
-        //cell.emailImage.image = UIImage(named: "starFilled")
-        //cell.emailIcon.image = UIImage("emailIcon") //UPLOAD EMAIL IMAGE IN ASSETS
+        cell.emailicon.image = #imageLiteral(resourceName: "email")
+        cell.emailicon.contentMode = .scaleAspectFit
         
         //customize font
         cell.contactName.font = UIFont(name: "Avenir-Roman", size: 18)
         cell.contactMajorYear.font = UIFont(name: "Avenir-Light", size: 15)
-        cell.contactEmail.font = UIFont(name: "Avenir-Light", size: 15)
         cell.contactTitle.font = UIFont(name: "Avenir-Light", size: 15)
+        cell.contactEmail.font = UIFont(name: "Avenir-Light", size: 15)
+        cell.contactEmail.textColor = UIColor.ecaftRed
         
         //make constraints
         let padding = 40
         let btwnPadding = 5
+        let iconWidth = 20
         cell.contactName.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(cell.snp.top).offset(btwnPadding)
             make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
@@ -305,10 +307,17 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.left.equalTo(cell.snp.left).offset(padding)
             make.width.lessThanOrEqualTo(cell.frame.width)
         }
+        cell.emailicon.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(cell.contactTitle.snp.bottom)
+            
+            make.left.equalTo(cell.snp.left).offset(padding).priority(.required)
+            make.bottom.equalTo(cell.snp.bottom).offset(btwnPadding*2)
+            make.width.equalTo(iconWidth)
+        }
         cell.contactEmail.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(cell.contactTitle.snp.bottom).offset(btwnPadding)
             make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
-            make.left.equalTo(cell.snp.left).offset(padding)
+            make.left.equalTo(cell.emailicon.snp.right).offset(btwnPadding)
             make.width.lessThanOrEqualTo(cell.frame.width)
         }
         
