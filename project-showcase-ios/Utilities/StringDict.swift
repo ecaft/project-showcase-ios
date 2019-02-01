@@ -20,4 +20,5 @@ enum StringDict: String {
     case email = "email"
     case isFavorited = "isFavorited"
     case major = "major"
+    case title = "title"
 }

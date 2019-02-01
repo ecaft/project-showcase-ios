@@ -120,6 +120,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 contact.email = item.childSnapshot(forPath: StringDict.email.rawValue).value as! String
                 contact.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
                 contact.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
+                contact.title = item.childSnapshot(forPath: StringDict.title.rawValue).value as! String
                 
                 self.teamViewModel.addContactToTeam(teamName: contact.teamName, teamType: contact.teamType, contact: contact)
             }
