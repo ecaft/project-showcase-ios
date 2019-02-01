@@ -354,7 +354,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         //make contraints
         let padding = 20
         let btwnPadding = 5
-        let leftPadding = 80
+        let leftPadding = 60
         customCell.nameLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(customCell.snp.top).offset(padding)
             make.right.equalTo(customCell.snp.right).offset(-padding).priority(.required)
@@ -368,10 +368,10 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
             make.width.lessThanOrEqualTo(customCell.frame.width)
         }
         customCell.starButton.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(customCell.snp.top).offset(padding)
+            make.top.equalTo(customCell.snp.top).offset(40)
             make.right.equalTo(customCell.nameLabel.snp.left).offset(-padding)
             make.left.equalTo(customCell.snp.left).offset(padding).priority(.required)
-            make.bottom.equalTo(customCell.snp.bottom).offset(padding)
+    
         }
         
         switch(segControl.selectedSegmentIndex){
