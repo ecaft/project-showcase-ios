@@ -36,7 +36,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
 
     
     //Segmented Control
-    let segmentTitles : [String] = ["All Teams", "M.Eng", "Undergrad Project Teams"]
+    let segmentTitles : [String] = ["All Teams", "M.Eng", "Undergrad"]
     var segControl = UISegmentedControl()
     
     
@@ -100,10 +100,10 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 let majors = item.childSnapshot(forPath: StringDict.majors.rawValue).value as! String
                 team.majors = majors.components(separatedBy: ", ")
                 
-                if team.teamType == "Undergrad Project Team" {
+                if team.teamType == "Undergrad" {
                     self.teamViewModel?.addTeamToProjectTeams(team)
                 }
-                if team.teamType == "M.Eng" {
+                if team.teamType == "MEng" {
                     self.teamViewModel?.addTeamtoMengTeams(team)
                 }
                 

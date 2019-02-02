@@ -73,13 +73,13 @@ class TeamViewModel: NSObject {
     }
     
     func addContactToTeam(teamName: String, teamType: String, contact: Contact) {
-        if teamType == "Undergrad Project Team" {
+        if teamType == "Undergrad" {
             for projectTeam in projectTeams{
                 if teamName == projectTeam.teamName {
                     projectTeam.contacts.append(contact)
                 }
             }
-        } else if(teamType == "M.Eng"){
+        } else if(teamType == "MEng"){
             for mEngTeam in mengTeams{
                 if teamName == mEngTeam.teamName {
                     mEngTeam.contacts.append(contact)
