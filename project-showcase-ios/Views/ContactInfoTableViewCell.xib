@@ -33,13 +33,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPl-bD-mAY">
-                        <rect key="frame" x="16" y="53" width="317" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRY-7D-Tyb">
                         <rect key="frame" x="54" y="76" width="279" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,7 +51,6 @@
                 <outlet property="contactEmail" destination="dRY-7D-Tyb" id="YYp-LS-yaK"/>
                 <outlet property="contactMajorYear" destination="Met-hR-Xuf" id="YpB-LA-7Hm"/>
                 <outlet property="contactName" destination="GvW-Hj-yyP" id="s6V-Jm-F0B"/>
-                <outlet property="contactTitle" destination="oPl-bD-mAY" id="1jV-yN-g1y"/>
                 <outlet property="emailicon" destination="ctt-g6-fdW" id="fnV-eW-nfD"/>
             </connections>
             <point key="canvasLocation" x="-192.80000000000001" y="-10.794602698650676"/>

@@ -17,7 +17,7 @@ class TeamTableViewCell: UITableViewCell {
 
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descripLabel: UILabel!
+    @IBOutlet weak var tableLabel: UILabel!
     
     var teamForThisCell: Team!
     var delegate: AddRemoveDelegate?
@@ -29,9 +29,9 @@ class TeamTableViewCell: UITableViewCell {
         }
     }
     
-    var descrip: String? {
+    var table: String? {
         didSet {
-            descripLabel.text = descrip
+            tableLabel.text = "Table \(table ?? "0")"
         }
     }
     

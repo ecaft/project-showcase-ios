@@ -174,7 +174,7 @@ class FavoritesListViewController: UIViewController, UIScrollViewDelegate, UITab
         let team = favoriteList[indexPath.row]
         customCell.teamForThisCell = team
         customCell.name = team.teamName
-        customCell.descrip = team.intro
+        customCell.table = team.table
         customCell.img = #imageLiteral(resourceName: "starFilled")
         
         /*

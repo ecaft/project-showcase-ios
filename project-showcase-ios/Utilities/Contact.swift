@@ -17,7 +17,6 @@ class Contact: NSObject, NSCoding {
     var email: String = ""
     var teamName: String = ""
     var teamType: String = ""
-    var title: String = ""
     
     init(name: String, major: String, gradYear: String, email: String, teamName: String, teamType: String, title: String) {
         self.name = name
@@ -26,7 +25,6 @@ class Contact: NSObject, NSCoding {
         self.email = email
         self.teamName = teamName
         self.teamType = teamType
-        self.title = title
     }
     
     override init() {
@@ -34,7 +32,7 @@ class Contact: NSObject, NSCoding {
     }
     
     override var description: String {
-        return "Name: \(name) | Major: \(major) | Graduation Year: \(gradYear) | Email: \(email) | Team: \(teamName) (\(teamType)) | \(title)"
+        return "Name: \(name) | Major: \(major) | Graduation Year: \(gradYear) | Email: \(email) | Team: \(teamName) (\(teamType))"
     }
     
     // NSCoding
@@ -45,7 +43,6 @@ class Contact: NSObject, NSCoding {
         email = aDecoder.decodeObject(forKey: StringDict.email.rawValue) as? String ?? ""
         teamName = aDecoder.decodeObject(forKey: StringDict.teamName.rawValue) as? String ?? ""
         teamType = aDecoder.decodeObject(forKey: StringDict.teamType.rawValue) as? String ?? ""
-        title = aDecoder.decodeObject(forKey: StringDict.title.rawValue) as? String ?? ""
     }
     
     func encode(with aCoder: NSCoder) {
@@ -55,6 +52,5 @@ class Contact: NSObject, NSCoding {
         aCoder.encode(email, forKey: StringDict.email.rawValue)
         aCoder.encode(teamName, forKey: StringDict.teamName.rawValue)
         aCoder.encode(teamType, forKey: StringDict.teamType.rawValue)
-        aCoder.encode(title, forKey: StringDict.title.rawValue)
     }
 }

@@ -26,7 +26,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-Sp-U2P" userLabel="Descrip Label">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-Sp-U2P" userLabel="Table Label">
                         <rect key="frame" x="60" y="49" width="250" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -44,9 +44,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="descripLabel" destination="cRF-Sp-U2P" id="Ncg-iE-xpH"/>
                 <outlet property="nameLabel" destination="TTD-kF-hf8" id="KHe-06-y0A"/>
                 <outlet property="starButton" destination="65N-Sm-Cvy" id="0r6-nK-gRn"/>
+                <outlet property="tableLabel" destination="cRF-Sp-U2P" id="AGx-jF-ihE"/>
             </connections>
             <point key="canvasLocation" x="34" y="71.5"/>
         </tableViewCell>

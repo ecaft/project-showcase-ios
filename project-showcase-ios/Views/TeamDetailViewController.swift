@@ -17,11 +17,11 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Header View
     var headerView = UIView()
-    var headerViewHeight : CGFloat = 400
+    var headerViewHeight : CGFloat = 500
     var nameTopOffset : CGFloat = 20
     var teamInfoTopOffset : CGFloat = 10
     var teamInfoBottomOffset : CGFloat = 15
-    var headerViewPadding :CGFloat = 30
+    var headerViewPadding :CGFloat = 50
     
     //Table view properties
     var name = UILabel() //team name
@@ -30,6 +30,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //var department = UILabel() //team's department >>IS THIS NEEDED??
     //var websiteButton = UIButton() //DO WE GET WEBSITE ADDRESSES PROVIDED?
     var teamInfo = UITextView()
+    var teamTable = UILabel() //table
     
     //Sections in tableview
     let sectionTitles : [String] = ["Contacts"]
@@ -76,7 +77,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func createHeaderView(){
-        headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 400))
+        headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 500))
         tableView.tableHeaderView = headerView
         
         //Create name label
@@ -115,6 +116,17 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.tableView.tableHeaderView?.addSubview(favoritesButton)
         
+        
+         //Create team table label
+         teamTable = UILabel(frame: CGRect(x: 0, y: 0, width: 65, height: 21))
+         teamTable.sizeToFit()
+         teamTable.textAlignment = NSTextAlignment.left
+         teamTable.font = UIFont(name: "Avenir-Light", size: 16)
+         teamTable.textColor = UIColor.ecaftDarkGray
+         teamTable.text = "Table " + team.table
+         self.tableView.tableHeaderView?.addSubview(teamTable)
+ 
+        
         /* IS THIS NEEDED?
         //Create department label
         department = UILabel(frame: CGRect(x: 0, y: 0, width: 65, height: 21))
@@ -141,7 +153,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         adjustUITextViewHeight(arg: teamInfo)
         self.tableView.tableHeaderView?.addSubview(teamInfo)
         
-        headerViewHeight = name.frame.size.height + teamInfo.frame.size.height + nameTopOffset + teamInfoTopOffset + teamInfoBottomOffset + headerViewPadding
+        headerViewHeight = name.frame.size.height + teamInfo.frame.size.height + nameTopOffset + teamInfoTopOffset + teamInfoBottomOffset + headerViewPadding + teamTable.frame.size.height
         
         print("name height = \(name.frame.size.height); teamInfo height = \(teamInfo.frame.size.height); headerViewHeight = \(headerViewHeight)")
         
@@ -171,8 +183,15 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.left.equalTo(headerView).offset(20)
             make.width.lessThanOrEqualTo(headerView.frame.width)
         }
-        teamInfo.snp.makeConstraints { (make) -> Void in
+        teamTable.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(name.snp.bottom).offset(teamInfoTopOffset)
+            make.right.equalTo(headerView).offset(-20).priority(.required)
+            make.left.equalTo(headerView).offset(20)
+            make.width.lessThanOrEqualTo(headerView.frame.width)
+            //make.bottom.equalTo(headerView).offset(-15)
+        }
+        teamInfo.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(teamTable.snp.bottom).offset(teamInfoTopOffset)
             make.right.equalTo(headerView).offset(-20).priority(.required)
             make.left.equalTo(headerView).offset(20)
             make.width.lessThanOrEqualTo(headerView.frame.width)
@@ -251,7 +270,7 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //Rows: Set height for each row
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 110
+        return 85
     }
     
     //Table: Load in custom cells
@@ -274,14 +293,12 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.contactName.text = contact.name
         cell.contactMajorYear.text = "\(contact.major) \(contact.gradYear)"
         cell.contactEmail.text = contact.email
-        cell.contactTitle.text = contact.title
         cell.emailicon.image = #imageLiteral(resourceName: "email")
         cell.emailicon.contentMode = .scaleAspectFit
         
         //customize font
         cell.contactName.font = UIFont(name: "Avenir-Roman", size: 18)
         cell.contactMajorYear.font = UIFont(name: "Avenir-Light", size: 15)
-        cell.contactTitle.font = UIFont(name: "Avenir-Light", size: 15)
         cell.contactEmail.font = UIFont(name: "Avenir-Light", size: 15)
         cell.contactEmail.textColor = UIColor.ecaftRed
         
@@ -301,21 +318,15 @@ class TeamDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             make.left.equalTo(cell.snp.left).offset(padding)
             make.width.lessThanOrEqualTo(cell.frame.width)
         }
-        cell.contactTitle.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(cell.contactMajorYear.snp.bottom).offset(btwnPadding)
-            make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
-            make.left.equalTo(cell.snp.left).offset(padding)
-            make.width.lessThanOrEqualTo(cell.frame.width)
-        }
         cell.emailicon.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(cell.contactTitle.snp.bottom)
+            make.top.equalTo(cell.contactMajorYear.snp.bottom)
             
             make.left.equalTo(cell.snp.left).offset(padding).priority(.required)
             make.bottom.equalTo(cell.snp.bottom).offset(btwnPadding*2)
             make.width.equalTo(iconWidth)
         }
         cell.contactEmail.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(cell.contactTitle.snp.bottom).offset(btwnPadding)
+            make.top.equalTo(cell.contactMajorYear.snp.bottom).offset(btwnPadding)
             make.right.equalTo(cell.snp.right).offset(-padding).priority(.required)
             make.left.equalTo(cell.emailicon.snp.right).offset(btwnPadding)
             make.width.lessThanOrEqualTo(cell.frame.width)

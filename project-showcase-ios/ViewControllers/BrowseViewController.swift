@@ -96,7 +96,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 team.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
                 team.descrip = item.childSnapshot(forPath: StringDict.descrip.rawValue).value as! String
                 team.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
-                team.intro = item.childSnapshot(forPath: StringDict.intro.rawValue).value as! String
+                team.table = item.childSnapshot(forPath: StringDict.table.rawValue).value as! String
                 let majors = item.childSnapshot(forPath: StringDict.majors.rawValue).value as! String
                 team.majors = majors.components(separatedBy: ", ")
                 
@@ -120,7 +120,6 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 contact.email = item.childSnapshot(forPath: StringDict.email.rawValue).value as! String
                 contact.teamName = item.childSnapshot(forPath: StringDict.teamName.rawValue).value as! String
                 contact.teamType = item.childSnapshot(forPath: StringDict.teamType.rawValue).value as! String
-                contact.title = item.childSnapshot(forPath: StringDict.title.rawValue).value as! String
                 
                 self.teamViewModel.addContactToTeam(teamName: contact.teamName, teamType: contact.teamType, contact: contact)
             }
@@ -346,7 +345,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
         
         //customize font
         customCell.nameLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
-        customCell.descripLabel.font = UIFont(name: "Avenir-Light", size: 15)
+        customCell.tableLabel.font = UIFont(name: "Avenir-Light", size: 15)
         
         //make favorites star yellow
         customCell.starButton.tintColor = UIColor.ecaftGold
@@ -362,7 +361,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
             make.left.equalTo(customCell.snp.left).offset(leftPadding)
             make.width.lessThanOrEqualTo(customCell.frame.width)
         }
-        customCell.descripLabel.snp.makeConstraints { (make) -> Void in
+        customCell.tableLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(customCell.nameLabel.snp.bottom).offset(btwnPadding)
             make.right.equalTo(customCell.snp.right).offset(-padding).priority(.required)
             make.left.equalTo(customCell.snp.left).offset(leftPadding)
@@ -380,7 +379,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 let team = teamViewModel.mengTeams[indexPath.row]
                 customCell.teamForThisCell = team
                 customCell.name = team.teamName
-                customCell.descrip = team.intro
+                customCell.table = team.table
             
                 if (team.isFavorited) {
                     customCell.img = #imageLiteral(resourceName: "starFilled")
@@ -392,7 +391,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 let team = teamViewModel.projectTeams[indexPath.row]
                 customCell.teamForThisCell = team
                 customCell.name = team.teamName
-                customCell.descrip = team.intro
+                customCell.table = team.table
             
                 if (team.isFavorited) {
                     customCell.img = #imageLiteral(resourceName: "starFilled")
@@ -405,7 +404,7 @@ class BrowseViewController: UIViewController, UISearchBarDelegate, UIScrollViewD
                 let team = teamViewModel.displayedTeams[indexPath.row]
                 customCell.teamForThisCell = team
                 customCell.name = team.teamName
-                customCell.descrip = team.intro
+                customCell.table = team.table
             
                 if (team.isFavorited) {
                     customCell.img = #imageLiteral(resourceName: "starFilled")
